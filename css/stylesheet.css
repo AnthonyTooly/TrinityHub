@@ -1,12 +1,3 @@
-.tcdLogo{
-    width: 10%;
-}
-
-.nav-link {
-    color:#0071BD !important;
-}
-
-
 h1{
     font-family: Source Sans Pro;
     font-style: normal;
@@ -21,4 +12,28 @@ p{
     line-height: 30px;
     display: flex;
     align-items: center;
+}
+
+.tcdLogo{
+    width: 10%;
+}
+
+
+.nav-link {
+    color:#0071BD !important;
+}
+
+
+.tcd-skip {
+    position: absolute;
+    margin-left: 50%;
+    margin-right:auto;
+    font-weight: bold;
+    background-color: white;
+    color: #0071BD;
+    top: -10%;
+}
+
+.tcd-skip:focus{
+    top:0;
 }
