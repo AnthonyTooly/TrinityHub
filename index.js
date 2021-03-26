@@ -16,7 +16,8 @@ console.log("Server running on http://localhost:" + port);
 app.get("/", function (request, response) {
 
     response.render("index.ejs",{
-        "events":events
+        "events":events,
+        "flag": flag
     });
 
 });
@@ -29,35 +30,43 @@ app.get("/coffee", function (request, response) {
 
 
 
+
+var flag = false;
 const events=[
     {
         title:"Google Techtalk",
         date:"May 2nd 2021 @9AM",
-        type:"Live event"
+        type:"Live event",
+        url:"https://talksat.withgoogle.com/"
     },
     {
         title:"Networking Beer Party",
         date:"May 2nd 2021 @11PM",
-        type:"Live event"
+        type:"Live event",
+        url:"https://www.eventbars.ie/party-home-bars-beer-kegs-hire-ireland/"
     },
     {
         title:"Accenture Recruitment Talk",
         date:"May 4th 2021 @9AM",
-        type:"Live event"
+        type:"Live event",
+        url:"https://youtu.be/2q0da_2wonA"
     },
     {
         title:"Accenture LinkedIn Workshop",
         date:"May 4th 2021 @12PM",
-        type:"Live event"
+        type:"Live event",
+        url:"https://www.linkedin.com/company/accenture/?originalSubdomain=ie"
     },
     {
         title:"Microsoft UX Talk",
         date:"May 8th 2021 @9AM",
-        type:"Live event"
+        type:"Live event",
+        url:"https://ux.microsoft.com/Talk/EdgeBrowserServices"
     },
     {
-        title:"Microsoft UX Talk",
+        title:"Free Gym day",
         date:"May 9th 2021 @All Day",
-        type:"In-House Event"
+        type:"In-House Event",
+        url:"#"
     }
 ];
