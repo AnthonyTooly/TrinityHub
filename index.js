@@ -21,6 +21,13 @@ app.get("/", function (request, response) {
 
 });
 
+app.get("/coffee", function (request, response) {
+
+    response.render("coffee.ejs");
+
+});
+
+
 
 const events=[
     {

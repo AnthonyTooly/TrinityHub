@@ -46,3 +46,22 @@ p{
 .rounded-button{
     border-radius: 20px !important;
 }
+
+.menu{
+    
+    background-color: #0071BD;
+    border-radius: 25px;
+    color: white;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    text-align: center;
+    
+    
+}
+
+.medialink{
+    
+    text-align: center;
+    
+}
