@@ -11,7 +11,7 @@ app.set("view_engine", "ejs");
 app.set("views", "templates");
 
 app.listen(port);
-console.log("Server running on http://localhost:" + port);
+console.log("Server running on http://localhost:" + port);              //this will display xxxx
 
 app.get("/", function (request, response) {
 
