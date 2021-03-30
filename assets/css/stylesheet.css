@@ -1,4 +1,4 @@
-h1{
+h1 {
     font-family: Source Sans Pro;
     font-style: normal;
     font-weight: bold !important;
@@ -7,48 +7,46 @@ h1{
     color: #0071BD !important;
 }
 
-p{
+p {
     font-size: 20px;
     line-height: 30px;
     display: flex;
     align-items: center;
 }
 
-.tcdLogo{
-    width: 10%;
+.tcdLogo {
+    width: 25%;
+    height: 25%;
 }
-
 
 .nav-link {
-    color:#0071BD !important;
+    color: #0071BD !important;
 }
-
 
 .tcd-skip {
     position: absolute;
     margin-left: 50%;
-    margin-right:auto;
+    margin-right: auto;
     font-weight: bold;
     background-color: white;
     color: #0071BD;
     top: -10%;
 }
 
-.tcd-skip:focus{
-    top:0;
+.tcd-skip:focus {
+    top: 0;
 }
 
-.rounded-pill{
+.rounded-pill {
     border: 2px solid #0071BD !important;
-    border-radius: 20px !important; 
-}
-
-.rounded-button{
     border-radius: 20px !important;
 }
 
-.menu{
-    
+.rounded-button {
+    border-radius: 20px !important;
+}
+
+.menu {
     background-color: #0071BD;
     border-radius: 25px;
     color: white;
@@ -56,12 +54,8 @@ p{
     padding-right: 100px;
     padding-top: 20px;
     text-align: center;
-    
-    
 }
 
-.medialink{
-    
+.medialink {
     text-align: center;
-    
 }

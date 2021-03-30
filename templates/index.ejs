@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" >
-        <link href="css/stylesheet.css" rel="stylesheet">
-        <script src="JavaScript/script.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <title>Trinity Innovation Hub</title>
-    </head>
-    <body>
-        <!-- NAVIGATION BAR START -->
-		<%- include("nav", {active: "Home"}) %>
-	<!-- NAVIGATION BAR END-->
+
+<head>
+    <meta charset="UTF-8">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <script src="JavaScript/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Trinity Innovation Hub</title>
+</head>
+
+<body>
+    <!-- NAVIGATION BAR START -->
+    <%- include("nav", {active: "Home"}) %>
+        <!-- NAVIGATION BAR END-->
 
         <!-- IMAGE CAROUSEL START-->
         <main role="main" id="maincontent">
@@ -46,14 +48,14 @@
         <!-- OPENING PARAGRAPH-->
         <div class="d-flex justify-content-center mb-3">
             <div class="p-2 align-self-center">
-                    <h1>What is Trinity Innovation Hub</h1>
+                <h1>What is Trinity Innovation Hub</h1>
             </div>
         </div>
 
         <div class="d-flex justify-content-center mb-3">
-            <div class="p-2 align-self-center w-25">
-                <p>The Innovation Hub provides a space for entrepreneurs, start-ups and innovation teams from large corporations. 
-                    It will be the venue for organized regular events to bring together academics, start-ups, the local community and the enterprise community, animating and programming the Grand Canal Innovation District.
+            <div class="p-2 align-self-center w-100">
+                <p>The Innovation Hub provides a space for entrepreneurs, start-ups and innovation teams from large corporations. It will be the venue for organized regular events to bring together academics, start-ups, the local community and the enterprise
+                    community, animating and programming the Grand Canal Innovation District.
                 </p>
             </div>
         </div>
@@ -62,44 +64,54 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <a href="<%=events[0].url%>" class="list-group-item rounded-pill list-group-item-action flex-column align-item-start active">            
+                    <a href="<%=events[0].url%>" class="list-group-item rounded-pill list-group-item-action flex-column align-item-start active">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><%= events[0].title %> </h5>
+                            <h5 class="mb-1">
+                                <%= events[0].title %>
+                            </h5>
                             <small>Today</small>
                         </div>
                         <small><%= events[0].date %></small>
-                        <p class="mb-2"><%= events[0].type %></p>
+                        <p class="mb-2">
+                            <%= events[0].type %>
+                        </p>
                     </a><br>
                 </div>
             </div>
             <div id="flag" value="false"></div>
-            <script>var flag = document.getElementById("flag").value</script>
+            <script>
+                var flag = document.getElementById("flag").value
+            </script>
             <% if (flag){%>
                 <%len=events.length;%>
-            <%}else{%>
-                <%len=3%>
-            <%}%>
-            <%for(var i=1;i<len; i++){ %>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <a href="<%=events[i].url%>" class="rounded-pill list-group-item list-group-item-action flex-column align-item-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><%= events[i].title %></h5>
-                        </div>
-                            <small><%=events[i].date%></small>
-                            <p class="mb-1"><%= events[i].type %></p>
-                    </a><br>
-                </div>
-            </div>
-            <% } %>
+                    <%}else{%>
+                        <%len=3%>
+                            <%}%>
+                                <%for(var i=1;i<len; i++){ %>
+                                    <div class="row">
+                                        <div class="col-md-6 offset-md-3">
+                                            <a href="<%=events[i].url%>" class="rounded-pill list-group-item list-group-item-action flex-column align-item-start">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">
+                                                        <%= events[i].title %>
+                                                    </h5>
+                                                </div>
+                                                <small><%=events[i].date%></small>
+                                                <p class="mb-1">
+                                                    <%= events[i].type %>
+                                                </p>
+                                            </a><br>
+                                        </div>
+                                    </div>
+                                    <% } %>
 
-            <div class="row">
-                    <div class="col col-md-6 offset-md-5">
-                        <button class="btn btn-primary rounded-button" onclick=showAll()>Show all update</button>
-                    </div>
-            </div><br>
+                                        <div class="row">
+                                            <div class="col col-md-6 offset-md-5">
+                                                <button class="btn btn-primary rounded-button" onclick=showAll()>Show all update</button>
+                                            </div>
+                                        </div><br>
         </div>
         <!--LIST OF EVENT END-->
-    </body>
+</body>
 
 </html>
