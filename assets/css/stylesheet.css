@@ -1,3 +1,4 @@
+/* heading font style*/
 h1 {
     font-family: Source Sans Pro;
     font-style: normal;
@@ -15,6 +16,7 @@ h2{
     color: #9590A0 !important;
 }
 
+/* paragraph style*/
 p {
     font-size: 20px;
     line-height: 30px;
@@ -22,10 +24,12 @@ p {
     align-items: center;
 }
 
+/*stylesheet for navigation brand*/
 .tcdLogo {
     width: 20%;
 }
 
+/*customised margin value */
 .ml-8{
     margin-left: 4.76%;
 }
@@ -42,6 +46,16 @@ p {
     left:50%;
 }
 
+.mt-customize{
+    margin-top: 4% !important;
+}
+
+/*stylesheet for navigation font color */
+.nav-link {
+    color: #0071BD !important;
+}
+
+/*stylesheet for logos including facebook, google etc and buttons for media follow*/
 .logo{
     margin-left:10%;
     width:20%;
@@ -52,14 +66,8 @@ p {
     width: 20%;
 }
 
-.mt-customize{
-    margin-top: 4% !important;
-}
 
-.nav-link {
-    color: #0071BD !important;
-}
-
+/*stylesheet for skip nav*/
 .tcd-skip {
     position: absolute;
     margin-left: 50%;
@@ -74,6 +82,7 @@ p {
     top: 0;
 }
 
+/*stylesheet for rounded button and rectangles */
 .rounded-pill {
     border: 2px solid #0071BD !important;
     border-radius: 20px !important;
@@ -83,6 +92,7 @@ p {
     border-radius: 20px !important;
 }
 
+/* style for menu on coffee*/
 .menu {
     background-color: #0071BD;
     border-radius: 25px;
@@ -93,10 +103,13 @@ p {
     text-align: center;
 }
 
+/*style sheet for all of buttons */
 .bgColor{
     color:white !important;
     background-color:#0071BD !important;
 }
+
+/*style sheet for video and image */
 .medialink {
     text-align: center;
 }
@@ -104,3 +117,106 @@ p {
 .mainImage{
     width: 50% !important;
 }
+
+
+/*stylesheet for contact page */
+.contact {
+    display: flex;
+    overflow: hidden;
+    margin-top: 5%;
+    align-items: center;
+    justify-content: center;
+}
+.contact_left {
+    width: 530px;
+    height: 656.51px;
+    margin-left: 70px;
+    border-radius: 20px;
+    background: #0071bd;
+}
+
+.contact_right {
+    width: 937.71px;
+    height: 499.5px;
+    margin-left: 100px;
+    background: url("../contact.jpg") no-repeat;
+    background-size: auto 100%;
+}
+.contact_left > p {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    font-family: Source Sans Pro;
+    font-size: 64px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 80px;
+    text-align: center;
+    text-align: center;
+    color: #fff;
+}
+.contact_name,.contact_message {
+    position: relative;
+    margin-top: 100px;
+    padding: 0 40px;
+    font-family: Source Sans Pro;
+    font-size: 24px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 30px;
+    text-align: left;
+    letter-spacing: 0;
+    color: #fff;
+}
+.contact_message {
+    margin-top: 50px;
+}
+.contact_name > p {
+    margin: 0;
+}
+.input_name,.area_message {
+    width: 100%;
+    padding-right: 20px;
+    border: none;
+    border-bottom: 3px solid #fff;
+    color: #fff;
+    background: none;
+    resize: none;
+}
+.area_message {
+    overflow: hidden;
+    height: 130px;
+    line-height: 70px;
+}
+.area_message_line {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    left: 0;
+    width: calc(100% - 80px);
+    height: 3px;
+    margin: 0 auto;
+    background: #fff;
+}
+input:focus,textarea:focus,button:focus {
+    outline: none;
+}
+.contact_button {
+    width: 117px;
+    height: 30px;
+    margin-top: 40px;
+    margin-left: 40px;
+    font-family: Source Sans Pro;
+    font-size: 14px;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    color: #0071bd;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 1px 5px 10px rgba(0,0,0,.3);
+}
+
+/*mobile version */
