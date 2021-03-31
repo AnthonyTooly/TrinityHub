@@ -15,10 +15,64 @@
     <!-- NAVIGATION BAR START -->
     <%- include("nav", {active: "Home"}) %>
         <!-- NAVIGATION BAR END-->
-        <main role="main" id="maincontent">
-            <!-- HEADER START -->
-            
-        </main>
+    <main role="main" id="maincontent">
+        <!-- HEADER START -->
+        <div class="container mt-customize">
+            <h1>Live Events</h1>
+            <div class="float-right">
+                <button class="btn bgColor" onclick=showAll()>Show all Event</button>
+            </div>
+            <h2><%=date.day%>, <%=date.date%></h2>
+            <br>
+            <% if (flag){%>
+                <%len=events.length;%>
+            <%}else{%>
+                <%len=2%>
+            <%}%>
+            <% for(var i=0; i<len; i++){%>
+                <%if(events[i].date==date.date){%>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                            <%= events[i].title %>
+                        </h5>
+                    </div>
+                    <small><%=events[i].date%>@<%=events[i].time%></small>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="1280" height="720" src="<%=events[i].url%>" title="<%=events[i].title%>" frameborder="0"  allowfullscreen></iframe>
+                    </div><br><br>
+                <%}%>
+            <%}%>
+            <div class="float-right">
+                <button class="btn bgColor" onclick=showAll()>Show all Event</button>
+            </div>
+            <h1>Previous Events</h1><br>
+            <% for(var i=0; i<events.length; i++){%>
+                <%if(events[i].date!=date.date&&events[i].url!="#"){%>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                            <%= events[i].title %>
+                        </h5>
+                    </div>
+                    <small><%=events[i].date%>@<%=events[i].time%></small>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="1280" height="720" src="<%=events[i].url%>" title="<%=events[i].title%>" frameborder="0"  allowfullscreen></iframe>
+                    </div><br>
+                <%}%>
+            <%}%><br>
+            <h1>Our Partners</h1>
+            <div class="container">
+                <img src="Google__G__Logo.svg" class="logo" alt="Google Logo"> 
+                <img src="facebook-svgrepo-com.svg" class="logo" alt="Facebook Logo">
+                <img src="Microsoft_logo.svg" class="logo" alt="Microsoft Logo">
+            </div><br><br>
+            <h1>Follow Us</h1>
+            <div class="container">
+                <button class="btn bgColor followButton" onclick=showAll()>Facebook</button>
+                <button class="btn bgColor followButton" onclick=showAll()>LinkedIn</button>
+                <button class="btn bgColor followButton" onclick=showAll()>Instagram</button>
+            </div><br>
+        </div>
+    </main>
 </body>
 
 </html>
