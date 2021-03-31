@@ -1,9 +1,10 @@
 <!-- NAVIGATION START -->
 <a class="tcd-skip" href="#maincontent">Skip to main content</a>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:transparent">
-    <img class="navbar-brand tcdLogo" src="Trinity_Main_Logo.svg" alt="Trinity Logo">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
+<div class="container-md ml-8">
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:transparent">
+    <div class="collapse navbar-collapse mx-auto" id="navbarSupportedContent">
+        <img class="navbar-brand tcdLogo" src="Trinity_Main_Logo.svg" alt="Trinity Logo">
+        <ul class="navbar-nav ml-13">
             <li class="nav-item active">
                 <a <%if(active=="Home" ){%>class="active nav-link"<%}%> class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -19,14 +20,8 @@
                     <a class="dropdown-item" href="/gym">Gym</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Live Event
-                        </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Streaming</a>
-                    <a class="dropdown-item" href="#">Partners</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link " href="/events">Events</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">booking</a>
@@ -35,10 +30,11 @@
                 <a class="nav-link" href="#">contact</a>
             </li>
         </ul>
-        <div class="btn-group-vertical" role="group" aria-label="First Group">
-            <button class="btn btn-sm btn-primary mb-1">Login</button>
-            <button class="btn btn-sm btn-primary">Sign Up</button>
+        <div class="navbar navbar-item btn-group-vertical ml-23" role="group" aria-label="First Group">
+            <button class="btn btn-sm bgColor mb-1">Login</button>
+            <button class="btn btn-sm bgColor">Sign Up</button>
         </div>
     </div>
 </nav>
+</div>
 <!-- NAVIGATION END-->
