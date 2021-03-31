@@ -35,7 +35,11 @@ app.get("/gym", function(request, response) {
 });
 
 app.get("/events", function(request, response){
-    response.render("events.ejs");
+    response.render("events.ejs",{
+        "date":date,
+        "events":events,
+        "flag":flag 
+    });
 });
 
 
@@ -43,38 +47,49 @@ app.get("/events", function(request, response){
 var flag = false;
 const events = [{
         title: "Google Techtalk",
-        date: "May 2nd 2021 @9AM",
+        date: "May 2nd 2021",
+        time: "9AM",
         type: "Live event",
-        url: "https://talksat.withgoogle.com/"
+        url: "https://www.youtube.com/embed/9Auq9mYxFEE"
     },
     {
         title: "Networking Beer Party",
-        date: "May 2nd 2021 @11PM",
+        date: "May 2nd 2021",
+        time: "11PM",
         type: "Live event",
-        url: "https://www.eventbars.ie/party-home-bars-beer-kegs-hire-ireland/"
+        url: "https://player.twitch.tv/?channel=timthetatman&parent=localhost&&autoplay=false&&branding=false"
     },
     {
         title: "Accenture Recruitment Talk",
-        date: "May 4th 2021 @9AM",
+        date: "May 4th 2021",
+        time: "9AM",
         type: "Live event",
-        url: "https://youtu.be/2q0da_2wonA"
+        url: "#"
     },
     {
         title: "Accenture LinkedIn Workshop",
-        date: "May 4th 2021 @12PM",
+        date: "May 4th 2021",
+        time: "12PM",
         type: "Live event",
-        url: "https://www.linkedin.com/company/accenture/?originalSubdomain=ie"
+        url: "#"
     },
     {
         title: "Microsoft UX Talk",
-        date: "May 8th 2021 @9AM",
+        date: "May 8th 2021",
+        time: "9AM",
         type: "Live event",
-        url: "https://ux.microsoft.com/Talk/EdgeBrowserServices"
+        url: "https://www.youtube.com/embed/ccjvRloreXg"  
     },
     {
         title: "Free Gym day",
-        date: "May 9th 2021 @All Day",
+        date: "May 9th 2021",
+        time: "All Day",
         type: "In-House Event",
         url: "#"
     }
 ];
+
+const date = {
+    day:"Today",
+    date:"May 2nd 2021"
+};
