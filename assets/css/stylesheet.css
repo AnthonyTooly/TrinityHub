@@ -15,8 +15,7 @@ p {
 }
 
 .tcdLogo {
-    width: 25%;
-    height: 25%;
+    width: 10%;
 }
 
 .nav-link {
@@ -58,4 +57,8 @@ p {
 
 .medialink {
     text-align: center;
+}
+
+.mainImage{
+    width: 50% !important;
 }
