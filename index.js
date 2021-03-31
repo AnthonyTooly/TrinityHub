@@ -42,6 +42,9 @@ app.get("/events", function(request, response){
     });
 });
 
+app.get("/contact", function(request, response){
+    response.render("contact.ejs");
+});
 
 
 var flag = false;
