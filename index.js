@@ -34,6 +34,9 @@ app.get("/gym", function(request, response) {
 
 });
 
+app.get("/events", function(request, response){
+    response.render("events.ejs");
+});
 
 
 
