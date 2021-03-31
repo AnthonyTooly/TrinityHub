@@ -7,6 +7,14 @@ h1 {
     color: #0071BD !important;
 }
 
+h2{
+    font-family: Source Sans Pro;
+    font-style:normal;
+    font-weight: blod;
+    display: flex;
+    color: #9590A0 !important;
+}
+
 p {
     font-size: 20px;
     line-height: 30px;
@@ -28,6 +36,24 @@ p {
 
 .ml-23{
     margin-left:23.87%;
+}
+
+.ml-center{
+    left:50%;
+}
+
+.logo{
+    margin-left:10%;
+    width:20%;
+}
+
+.followButton{
+    margin-left:10%;
+    width: 20%;
+}
+
+.mt-customize{
+    margin-top: 4% !important;
 }
 
 .nav-link {
