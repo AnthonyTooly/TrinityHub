@@ -15,7 +15,19 @@ p {
 }
 
 .tcdLogo {
-    width: 10%;
+    width: 20%;
+}
+
+.ml-8{
+    margin-left: 4.76%;
+}
+
+.ml-13{
+    margin-left: 13%;
+}
+
+.ml-23{
+    margin-left:23.87%;
 }
 
 .nav-link {
@@ -55,6 +67,10 @@ p {
     text-align: center;
 }
 
+.bgColor{
+    color:white !important;
+    background-color:#0071BD !important;
+}
 .medialink {
     text-align: center;
 }
