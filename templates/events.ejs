@@ -20,17 +20,21 @@
         <div class="container mt-customize">
             <h1>Live Events</h1>
             <div class="float-right">
-                <button class="btn bgColor" onclick=showAll()>Show all Event</button>
+                <button class="btn bgColor " data-toggle="collapse" data-target="#showAllLiveEvents" aria-expended="false" aria-controlls="showAllLiveEvents">Show all Event</button>
             </div>
             <h2><%=date.day%>, <%=date.date%></h2>
             <br>
-            <% if (flag){%>
-                <%len=events.length;%>
-            <%}else{%>
-                <%len=2%>
-            <%}%>
-            <% for(var i=0; i<len; i++){%>
-                <%if(events[i].date==date.date){%>
+            <%var flag=true;%>                                          <!--flag for live event button-->
+            <%var flag2=true;%>                                         <!--flag for previous event button-->
+            <%var numOfLiveEvents=0;%>                                   <!--number of live event-->
+            <%var numOfPreviousEvents=0%>                                <!--number of previous event-->
+            <% for(var i=0; i<events.length; i++){%>
+                <%if(events[i].date==date.date){%>                      <!--if event date is today-->
+                    <%numOfLiveEvents++;%>
+                    <%if(numOfLiveEvents>1&&flag==true){%>
+                    <div class="collapse" id="showAllLiveEvents">
+                        <%flag=false;%>
+                    <%}%>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">
                             <%= events[i].title %>
@@ -42,12 +46,20 @@
                     </div><br><br>
                 <%}%>
             <%}%>
+            <%if(flag==false){%>
+                    </div>
+            <%}%>
             <div class="float-right">
-                <button class="btn bgColor" onclick=showAll()>Show all Event</button>
+                <button class="btn bgColor" data-toggle="collapse" data-target="#showAllPreviousEvents" aria-expended="false" aria-controlls="showAllPreviousEvents">Show all Event</button>
             </div>
             <h1>Previous Events</h1><br>
             <% for(var i=0; i<events.length; i++){%>
-                <%if(events[i].date!=date.date&&events[i].url!="#"){%>
+                <%if(events[i].date!=date.date&&events[i].url!="#"){%>          <!--if the date is not today-->
+                    <%numOfPreviousEvents++;%>
+                    <%if(numOfPreviousEvents>2&&flag2==true){%>
+                        <div class="collapse" id="showAllPreviousEvents">
+                            <%flag2=false;%>
+                    <%}%>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">
                             <%= events[i].title %>
@@ -58,7 +70,12 @@
                         <iframe width="1280" height="720" src="<%=events[i].url%>" title="<%=events[i].title%>" frameborder="0"  allowfullscreen></iframe>
                     </div><br>
                 <%}%>
-            <%}%><br>
+            <%}%>
+            <%if(flag2==false){%>
+                </div>
+            <%}%>
+            <br>
+            
             <h1>Our Partners</h1>
             <div class="container">
                 <img src="Google__G__Logo.svg" class="logo" alt="Google Logo"> 

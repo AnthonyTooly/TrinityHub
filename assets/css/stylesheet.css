@@ -29,6 +29,10 @@ p {
     width: 20%;
 }
 
+.hide[aria-expanded="true"]{
+    display:none;
+}
+
 /*customised margin value */
 .ml-8{
     margin-left: 4.76%;

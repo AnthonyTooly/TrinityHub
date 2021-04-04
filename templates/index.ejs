@@ -79,12 +79,17 @@
         <script>
             var flag = document.getElementById("flag").value
         </script>
-        <% if (flag){%>
-            <%len=events.length;%>
-        <%}else{%>
-            <%len=3%>
-        <%}%>
-        <%for(var i=1;i<len; i++){ %>
+        <%var flag=true;%>
+        <%for(var i=1;i<events.length; i++){ %>
+            <%if(i>3&&flag==true){%>
+            <div class="row">
+                <div class="col col-md-6 offset-md-5">
+                    <button class="btn btn-primary rounded-button hide" data-toggle="collapse" data-target="#showAllEvent" aria-expended="false" aria-controls="showAllEvent">Show all update</button>
+                </div>
+            </div>
+            <%flag=false;%>
+            <div class="collapse" id="showAllEvent">
+            <%}%>
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <a href="<%=events[i].url%>" class="rounded-pill list-group-item list-group-item-action flex-column align-item-start">
@@ -101,11 +106,9 @@
             </div>
         </div>
         <% } %>
-        <div class="row">
-            <div class="col col-md-6 offset-md-5">
-                <button class="btn btn-primary rounded-button" onclick=showAll()>Show all update</button>
-            </div>
-        </div><br>
+        <%if(flag==false){%>
+        </div>
+        <%}%>
     </div>
         <!--LIST OF EVENT END-->
 </body>
