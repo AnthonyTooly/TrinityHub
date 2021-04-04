@@ -28,6 +28,12 @@ app.get("/coffee", function(request, response) {
 
 });
 
+app.get("/profile", function(request, response) {
+
+    response.render("profile.ejs");
+
+});
+
 app.get("/gym", function(request, response) {
 
     response.render("gym.ejs");
