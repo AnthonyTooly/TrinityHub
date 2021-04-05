@@ -44,7 +44,6 @@ app.get("/", function (request, response) {
     var sessionUsername = request.session.username;	//Assign cookie data to new variable
     response.render("index.ejs", {
         "events": events,
-        "flag": flag,
         "sessionUsername":sessionUsername
     });
 
@@ -71,11 +70,13 @@ app.get("/gym", function (request, response) {
 app.get("/events", function (request, response) {
     
     var sessionUsername = request.session.username;	//Assign cookie data to new variable
-    response.render("events.ejs", {
-        "date": date,
-        "events": events,
-        "flag": flag,
-        "sessionUsername": sessionUsername
+    con.query("SELECT * FROM events;", function (err, result,fields){
+        if(err) throw err;
+        response.render("events.ejs", {
+            "date": date,
+            "events": result,
+            "sessionUsername": sessionUsername
+        });
     });
 });
 
@@ -90,7 +91,7 @@ app.post("/signup", function (request, response) {
     var username = request.body.username;
     var email = request.body.email;
     var password = request.body.password;
-    var sessionUsername = request.session.username;	//Assign cookie data to new variable
+    var sessionUsername = null;	//Assign cookie data to new variable
 
     //Check whether the user already exists
     checkSignup(username, function (result) {
@@ -101,7 +102,6 @@ app.post("/signup", function (request, response) {
             });
             response.render("index.ejs", {
                 "events": events,
-                "flag": flag,
                 "sessionUsername": sessionUsername
             });
         } else {
@@ -147,50 +147,6 @@ app.get("/logout", function(request, response){
 });
 
 
-var flag = false;
-const events = [{
-        title: "Google Techtalk",
-        date: "May 2nd 2021",
-        time: "9AM",
-        type: "Live event",
-        url: "https://www.youtube.com/embed/9Auq9mYxFEE"
-    },
-    {
-        title: "Networking Beer Party",
-        date: "May 2nd 2021",
-        time: "11PM",
-        type: "Live event",
-        url: "https://player.twitch.tv/?channel=timthetatman&parent=localhost&&autoplay=false&&branding=false"
-    },
-    {
-        title: "Accenture Recruitment Talk",
-        date: "May 4th 2021",
-        time: "9AM",
-        type: "Live event",
-        url: "#"
-    },
-    {
-        title: "Accenture LinkedIn Workshop",
-        date: "May 4th 2021",
-        time: "12PM",
-        type: "Live event",
-        url: "#"
-    },
-    {
-        title: "Microsoft UX Talk",
-        date: "May 8th 2021",
-        time: "9AM",
-        type: "Live event",
-        url: "https://www.youtube.com/embed/ccjvRloreXg"
-    },
-    {
-        title: "Free Gym day",
-        date: "May 9th 2021",
-        time: "All Day",
-        type: "In-House Event",
-        url: "#"
-    }
-];
 
 const date = {
     day: "Today",
