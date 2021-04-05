@@ -42,9 +42,12 @@ console.log("Server running on http://localhost:" + port); //this will display x
 
 app.get("/", function (request, response) {
     var sessionUsername = request.session.username;	//Assign cookie data to new variable
-    response.render("index.ejs", {
-        "events": events,
-        "sessionUsername":sessionUsername
+    con.query("SELECT * FROM events;", function (err, result,fields){
+        if(err) throw err;
+        response.render("index.ejs", {
+            "events": result,
+            "sessionUsername": sessionUsername
+        });
     });
 
 });
@@ -100,9 +103,12 @@ app.post("/signup", function (request, response) {
                 if (err)
                     throw err;
             });
-            response.render("index.ejs", {
-                "events": events,
-                "sessionUsername": sessionUsername
+            con.query("SELECT * FROM events;", function (err, result,fields){
+                if(err) throw err;
+                response.render("index.ejs", {
+                    "events": result,
+                    "sessionUsername": sessionUsername
+                });
             });
         } else {
             //Show error message
