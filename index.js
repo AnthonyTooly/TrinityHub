@@ -90,6 +90,7 @@ app.post("/signup", function (request, response) {
     var username = request.body.username;
     var email = request.body.email;
     var password = request.body.password;
+    var sessionUsername = request.session.username;	//Assign cookie data to new variable
 
     //Check whether the user already exists
     checkSignup(username, function (result) {
@@ -100,7 +101,8 @@ app.post("/signup", function (request, response) {
             });
             response.render("index.ejs", {
                 "events": events,
-                "flag": flag
+                "flag": flag,
+                "sessionUsername": sessionUsername
             });
         } else {
             //Show error message
