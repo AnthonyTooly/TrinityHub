@@ -74,12 +74,13 @@ p {
 /*stylesheet for skip nav*/
 .tcd-skip {
     position: absolute;
-    margin-left: 50%;
+    margin-left: 45%;
     margin-right: auto;
     font-weight: bold;
     background-color: white;
     color: #0071BD;
-    top: -10%;
+    z-index: 1;
+    top:-10%;
 }
 
 .tcd-skip:focus {
