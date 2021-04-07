@@ -19,16 +19,22 @@
         <!-- PROFILE START -->
 
         <div class="d-flex justify-content-center mb-3">
-            <img src='User_Male.svg' alt='Profile Picture' width="10%" height="10%">
+
             <div class=' w-25 p-3 min-vh-100 align-self-start'>
-                    
+                <img src="<%= avatar%>" alt='Profile Picture' width="80%" height="80%">
+                <%if(sessionUsername){%>
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <input id="upload" type="file" name="myimage">
+                    <input type="submit">
+                </form>
+                <% } %>
             </div>
 
             <div class=' d-flex w-25 p-3 min-vh-100 flex-column profile'>
                 <div class="p-2"><h1> Profile </h1></div>
                 <div class="p-2">
                     <ul>
-                        <li><%= username %></li>
+                        <li><%= sessionUsername %></li>
                         <li>Email</li>
                         <li>Language</li>
                     </ul>
