@@ -1,4 +1,5 @@
 /* heading font style*/
+
 h1 {
     font-family: Source Sans Pro;
     font-style: normal;
@@ -8,15 +9,17 @@ h1 {
     color: #0071BD !important;
 }
 
-h2{
+h2 {
     font-family: Source Sans Pro;
-    font-style:normal;
+    font-style: normal;
     font-weight: blod;
     display: flex;
     color: #9590A0 !important;
 }
 
+
 /* paragraph style*/
+
 p {
     font-size: 20px;
     line-height: 30px;
@@ -24,54 +27,67 @@ p {
     align-items: center;
 }
 
+
 /*stylesheet for navigation brand*/
+
+.navbar {
+    font-family: "Open Sans", sans-serif;
+}
+
 .tcdLogo {
     width: 20%;
 }
 
-.hide[aria-expanded="true"]{
-    display:none;
+.hide[aria-expanded="true"] {
+    display: none;
 }
 
+
 /*customised margin value */
-.ml-8{
+
+.ml-8 {
     margin-left: 4.76%;
 }
 
-.ml-13{
+.ml-13 {
     margin-left: 13%;
 }
 
-.ml-23{
-    margin-left:23.87%;
+.ml-23 {
+    margin-left: 23.87%;
 }
 
-.ml-center{
-    left:50%;
+.ml-center {
+    left: 50%;
 }
 
-.mt-customize{
+.mt-customize {
     margin-top: 4% !important;
 }
 
+
 /*stylesheet for navigation font color */
+
 .nav-link {
     color: #0071BD !important;
 }
 
+
 /*stylesheet for logos including facebook, google etc and buttons for media follow*/
-.logo{
-    margin-left:10%;
-    width:20%;
+
+.logo {
+    margin-left: 10%;
+    width: 20%;
 }
 
-.followButton{
-    margin-left:10%;
+.followButton {
+    margin-left: 10%;
     width: 20%;
 }
 
 
 /*stylesheet for skip nav*/
+
 .tcd-skip {
     position: absolute;
     margin-left: 45%;
@@ -80,14 +96,16 @@ p {
     background-color: white;
     color: #0071BD;
     z-index: 1;
-    top:-10%;
+    top: -10%;
 }
 
 .tcd-skip:focus {
     top: 0;
 }
 
+
 /*stylesheet for rounded button and rectangles */
+
 .rounded-pill {
     border: 2px solid #0071BD !important;
     border-radius: 20px !important;
@@ -97,7 +115,9 @@ p {
     border-radius: 20px !important;
 }
 
+
 /* style for menu on coffee*/
+
 .menu {
     background-color: #0071BD;
     border-radius: 25px;
@@ -108,23 +128,28 @@ p {
     text-align: center;
 }
 
+
 /*style sheet for all of buttons */
-.bgColor{
-    color:white !important;
-    background-color:#0071BD !important;
+
+.bgColor {
+    color: white !important;
+    background-color: #0071BD !important;
 }
 
+
 /*style sheet for video and image */
+
 .medialink {
     text-align: center;
 }
 
-.mainImage{
+.mainImage {
     width: 50% !important;
 }
 
 
 /*stylesheet for contact page */
+
 .contact {
     display: flex;
     overflow: hidden;
@@ -132,6 +157,7 @@ p {
     align-items: center;
     justify-content: center;
 }
+
 .contact_left {
     width: 530px;
     height: 656.51px;
@@ -147,7 +173,8 @@ p {
     background: url("../contact.jpg") no-repeat;
     background-size: auto 100%;
 }
-.contact_left > p {
+
+.contact_left>p {
     display: block;
     width: 100%;
     margin-top: 30px;
@@ -160,7 +187,9 @@ p {
     text-align: center;
     color: #fff;
 }
-.contact_name,.contact_message {
+
+.contact_name,
+.contact_message {
     position: relative;
     margin-top: 100px;
     padding: 0 40px;
@@ -173,13 +202,17 @@ p {
     letter-spacing: 0;
     color: #fff;
 }
+
 .contact_message {
     margin-top: 50px;
 }
-.contact_name > p {
+
+.contact_name>p {
     margin: 0;
 }
-.input_name,.area_message {
+
+.input_name,
+.area_message {
     width: 100%;
     padding-right: 20px;
     border: none;
@@ -188,11 +221,13 @@ p {
     background: none;
     resize: none;
 }
+
 .area_message {
     overflow: hidden;
     height: 130px;
     line-height: 70px;
 }
+
 .area_message_line {
     position: absolute;
     top: 100px;
@@ -203,9 +238,13 @@ p {
     margin: 0 auto;
     background: #fff;
 }
-input:focus,textarea:focus,button:focus {
+
+input:focus,
+textarea:focus,
+button:focus {
     outline: none;
 }
+
 .contact_button {
     width: 117px;
     height: 30px;
@@ -221,27 +260,27 @@ input:focus,textarea:focus,button:focus {
     color: #0071bd;
     border-radius: 4px;
     background: #fff;
-    box-shadow: 1px 5px 10px rgba(0,0,0,.3);
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, .3);
 }
 
-.profile{
+.profile {
     background: #0071BD;
     border-radius: 20px;
     color: #ffff;
     text-align: center;
 }
 
-.profile h1{
-    
-    display:inline;
+.profile h1 {
+    display: inline;
     color: #ffff !important;
     text-align: center !important;
 }
 
-.profile ul{
-    display:inline;
+.profile ul {
+    display: inline;
     list-style-type: none;
     font-size: 20px;
 }
+
 
 /*mobile version */
