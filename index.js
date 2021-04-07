@@ -1,6 +1,7 @@
 var express = require("express");
 var mysql = require('mysql');
 var bodyParser = require("body-parser");
+var flash = require("express-flash");
 var session = require('express-session');
 //Configure mysql connection
 var con = mysql.createConnection({
@@ -30,9 +31,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: {maxAge: 60000}
 }));
-
-
+app.use(flash());
 // set up our templating engine
+
 app.set("view_engine", "ejs");
 app.set("views", "templates");
 
@@ -41,51 +42,50 @@ console.log("Server running on http://localhost:" + port); //this will display x
 
 
 app.get("/", function (request, response) {
-    var sessionUsername = request.session.username;	//Assign cookie data to new variable
     con.query("SELECT * FROM events;", function (err, result,fields){
         if(err) throw err;
         response.render("index.ejs", {
             "events": result,
-            "sessionUsername": sessionUsername
+            "sessionUsername": request.session.username
         });
     });
 
 });
 
 app.get("/coffee", function (request, response) {
-    var sessionUsername = request.session.username;	//Assign cookie data to new variable
-    response.render("coffee.ejs",{"sessionUsername":sessionUsername});
+    response.render("coffee.ejs",{"sessionUsername":request.session.username});
 
 });
 
 app.get("/profile", function (request, response) {
-    var sessionUsername = request.session.username;	//Assign cookie data to new variable
-    response.render("profile.ejs", {"sessionUsername": sessionUsername});
+    response.render("profile.ejs", {"sessionUsername": request.session.username});
 
 });
 
 app.get("/gym", function (request, response) {
-    var sessionUsername = request.session.username;	//Assign cookie data to new variable
-    response.render("gym.ejs",{"sessionUsername":sessionUsername});
+    response.render("gym.ejs",{"sessionUsername":request.session.username});
 
 });
 
 app.get("/events", function (request, response) {
-    
-    var sessionUsername = request.session.username;	//Assign cookie data to new variable
     con.query("SELECT * FROM events;", function (err, result,fields){
         if(err) throw err;
         response.render("events.ejs", {
             "date": date,
             "events": result,
-            "sessionUsername": sessionUsername
+            "sessionUsername": request.session.username
         });
     });
 });
 
 app.get("/contact", function (request, response) {
-    var sessionUsername = request.session.username;	//Assign cookie data to new variable
-    response.render("contact.ejs",{"sessionUsername": sessionUsername});
+    response.render("contact.ejs",{"sessionUsername": request.session.username});
+});
+
+app.get("/login", function(request, response){
+    response.render("login.ejs",{
+        "sessionUsername": request.session.username,
+    });
 });
 
 app.post("/signup", function (request, response) {
@@ -103,15 +103,10 @@ app.post("/signup", function (request, response) {
                 if (err)
                     throw err;
             });
-            con.query("SELECT * FROM events;", function (err, result,fields){
-                if(err) throw err;
-                response.render("index.ejs", {
-                    "events": result,
-                    "sessionUsername": sessionUsername
-                });
-            });
+            response.redirect('/');
         } else {
-            //Show error message
+            request.flash('errorSignup','Username already exisit');
+            response.redirect('/login');
 
         }
     });
@@ -123,33 +118,29 @@ app.post("/login", function (request, response) {
     //Retrieve data from signup form
     var username = request.body.username;
     var password = request.body.password;
-    request.session.username = username;	//Assign cookie data
-    var sessionUsername = request.session.username;	//Assign cookie data to new variable
 
+    var err_message='';
     //Check whether the user already exists
     checkLogin(username, password, function (result) {
         if (result == false) {
             //Create session data
-
+            request.session.username=username;	//Assign cookie data to new variable
+            var sessionUsername=request.session.username;
             response.render("profile.ejs", {
                 "username": username,
                 "sessionUsername": sessionUsername
             });
         } else {
-            //Show error message
-
+           request.flash('errorLogin','Please enter valid information');
+           response.redirect('/login');
         }
     });
 
 });
 
 app.get("/logout", function(request, response){
-	
-	var sessionUsername = request.session.username;	//Assign cookie data to new variable
 	request.session.destroy(); //End the current session.
 	response.redirect("/");	//Redirect to home page
-	
-	
 });
 
 
