@@ -1,37 +1,89 @@
 <!-- FOOTER START -->
 <script src="JavaScript/script.js"></script>
 <br>
-<footer style="background-color:#0071BD">
-<div class="container-md ml-8">
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color:transparent">
-        <div class="collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-            <img class="navbar-brand tcdLogo" src="Trinity_White_main.svg" alt="Trinity Logo">
-            <ul class="navbar-nav ml-13">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/coffee">Coffee shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/gym">Gym</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/events">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
-                </li>
-            </ul>
-            <div class="navbar navbar-item btn-group-vertical ml-23" role="group" aria-label="First Group">
-                <% if(typeof sessionUsername!=='undfeined'&&sessionUsername!=null){%>
-                    <a href="/logout" class="btn btn-sm bgColor mb-1" role="button">Logout</a>
-                <%}else{%>
-                    <button class="btn btn-sm bgColor mb-1" onclick=login() data-target="#login">Login</button>
-                <%}%>
+<footer class="footer"  style="background-color:#0071BD">
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+      <!-- Grid row -->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-4 mt-md-0 mt-3">
+          <!-- Content -->
+          <image src="Trinity_White_main.svg">
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none pb-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-4 mb-md-0 mb-3">
+          <!-- Links -->
+            <br>
+            <div class="text-left">
+                <h5 class="footerText">Connect with Us!</h4>
+            </div>
+            <div class="text-left">
+                <image src="/instagram.svg" alt="Instagram" class="footerLogoSet"></image>
+                <image src="/linkedin.svg" alt="LinkedIn" class="footerLogoSet footerLogo"></image>
+                <image src="/facebook.svg" alt="Facebook" class="footerLogoSet footerLogo"></image>
+                <image src="/twitter.svg" alt="Twitter" class="footerLogoSet footerLogo"></image>
             </div>
         </div>
-    </nav>
-</div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-md-4 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <br>
+  
+          <ul class="list-unstyled">
+            <li >
+                <a class="footerText" href="/">Home</a>
+            </li>
+            <li>
+                <a class="footerText" href="/coffee">Coffee</a>
+            </li>
+            <li>
+                <a class="footerText" href="/gym">Gym</a>
+            </li>
+            <li >
+                <a class="footerText" href="/events">Events</a>
+            </li>
+            <li>
+                <a class="footerText" href="/contact">Contact</a>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+      <div class="row">
+        <div class="col-md-3 mt-md-0 mt-3 ml-3">
+            <address class="footerText addressText">
+                <strong>Trinity Innovation Hub</strong>
+                 <br>
+                 7 Hanover Quay,
+                 <br>
+                 Grand Canal Dock,
+                 <br>
+                 Dublin
+            </address>
+        </div>
+        <div class="col-md-3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.9458352068996!2d-6.236316983978539!3d53.3442257825709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670eed1bfc13c3%3A0xe2f2cbcf4e501a9c!2s7%20Hanover%20Quay%2C%20Dublin%20Docklands%2C%20Dublin!5e0!3m2!1sen!2sie!4v1617828424609!5m2!1sen!2sie" width="700px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Links -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 footerText">© 2021 Copyright:
+      <a class="footerText" href="https://mdbootstrap.com/"> IDM group 4</a>
+    </div>
+    <!-- Copyright -->
+  
 </footer>
 <!-- FOOTER END-->
