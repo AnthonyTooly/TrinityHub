@@ -161,24 +161,33 @@ app.post("/upload", function (request, response) {
     //Check that a file has not been selected
     if (!(request.files && request.files.myimage)) {
         //error
-
+        request.flash('errorNoFile', 'No File selected');
+        response.redirect('/profile');
     } else {
         //Prepare the file for upload
         var file = request.files.myimage;
         var fileName = file.name;       //Image name
         var fileData = file.data;       //Image data
-        var fileType = file.mimetype;
-        console.log(fileType);
+        var fileSize = file.size;   //Get image size
 
         //convert buffer to base64
         var convert = fileData.toString('base64');
 
-        //Store in DB
-        con.query("UPDATE users SET picture = '" + convert + "' WHERE username = '" + sessionUsername + "';", function (err, result, fields) {
-            if (err)
-                throw err;
+        //Ensure a file has been selected
 
-        });
+        //Ensure the file isn't above the max size of 1MB
+        if (fileSize < 1000000) {
+            //Store in DB
+            con.query("UPDATE users SET picture = '" + convert + "' WHERE username = '" + sessionUsername + "';", function (err, result, fields) {
+                if (err)
+                    throw err;
+
+            });
+        } else {
+            //Display error
+            request.flash('errorUpload', 'File exceeds 1MB limit');
+            response.redirect('/profile');
+        }
 
         avatar = convert;
         //render profile page
