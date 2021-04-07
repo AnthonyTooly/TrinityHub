@@ -167,6 +167,8 @@ app.post("/upload", function (request, response) {
         var file = request.files.myimage;
         var fileName = file.name;       //Image name
         var fileData = file.data;       //Image data
+        var fileType = file.mimetype;
+        console.log(fileType);
 
         //convert buffer to base64
         var convert = fileData.toString('base64');
@@ -180,7 +182,13 @@ app.post("/upload", function (request, response) {
 
         avatar = convert;
         //render profile page
-        response.render("profile.ejs", {"sessionUsername": sessionUsername, "avatar": avatar});
+        getAvatar(sessionUsername, function (result) {
+            avatar = result
+            response.render("profile.ejs", {
+                "sessionUsername": sessionUsername,
+                "avatar": avatar
+            });
+        });
 
     }
 });
