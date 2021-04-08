@@ -18,40 +18,73 @@
         <!-- NAVIGATION BAR END-->
         <!-- PROFILE START -->
 
-        <div class="d-flex justify-content-center mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
 
-            <div class=' w-25 p-3 min-vh-100 align-self-start'>
-                <img src="<%= avatar%>" alt='Profile Picture' width="80%" height="80%">
-                <%if(sessionUsername){%>
-                <form action="/upload" method="post" enctype="multipart/form-data">
-                    <input id="upload" type="file" name="myimage">
-                    <input type="submit">
-                </form>
-                <% } %>
-                <%if(messages.errorUpload){%>
-                <div class="alert alert-danger">
-                    <%=messages.errorUpload%>
                 </div>
-                <% } %>
-                <%if(messages.errorNoFile){%>
-                <div class="alert alert-danger">
-                    <%=messages.errorNoFile%>
+                <div class="col-md-8 profile">
+                    <h1 class="justify-content-center profileTitle"> Profile </h1><br>
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="<%= avatar%>" alt='Profile Picture' class="avatar" >
+                            <%if(sessionUsername){%>
+                            <form action="/upload" method="post" enctype="multipart/form-data">
+                                <div class="container">
+                                    <input id="upload" class="custom-file-input" type="file" name="myimage" onchange="form.submit()">
+                                    <label class="fileSelect" for="upload">
+                                        Update your picture
+                                     </label>
+                                </div>
+                            </form>
+                            <% } %>
+                            <%if(messages.errorUpload){%>
+                            <div class="alert alert-danger">
+                                <%=messages.errorUpload%>
+                            </div>
+                            <% } %>
+                            <%if(messages.errorNoFile){%>
+                            <div class="alert alert-danger">
+                                <%=messages.errorNoFile%>
+                            </div>
+                            <% } %>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li>Username: &#8287 <%= sessionUsername %></li><br>
+                                <li>Email:&#8287 <%= email%></li><br>
+                                <li>
+                                    Existing booking:
+                                </li>
+                                <%if(booking!=null&&booking.length>0&&booking!=""){%>
+                                    <%for(var i=0; i<booking.length; i++){%>
+                                        <li><%=booking[i].room_name%></li>
+                                    <%}%>
+                                <%} else{%>
+                                    <p>You have no existing booking</p>
+                                <%}%>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <% } %>
+                <div class="col-md-2">
+            
+                </div>
             </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <h1>Booking table</h1>
+                <div>
 
-            <div class=' d-flex w-25 p-3 min-vh-100 flex-column profile'>
-                <div class="p-2"><h1> Profile </h1></div>
-                <div class="p-2">
-                    <ul>
-                        <li><%= sessionUsername %></li>
-                        <li>Email</li>
-                        <li>Language</li>
-                    </ul>
                 </div>
             </div>
         </div>
-
+        
         <!-- PROFILE END -->
         <%- include ("footer")%>
     </body>
