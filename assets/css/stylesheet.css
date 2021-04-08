@@ -1,3 +1,5 @@
+
+
 /* heading font style*/
 h1 {
     font-family: Source Sans Pro;
@@ -274,13 +276,12 @@ button:focus {
 .profile {
     background: #0071BD;
     border-radius: 20px;
-    color: #ffff;
-    text-align: center;
+    color:white;
 }
 
-.profile h1 {
-    display: inline;
-    color: #ffff !important;
+h1.profileTitle {
+    margin: 0 auto;
+    color:white !important;
     text-align: center !important;
 }
 
@@ -288,6 +289,18 @@ button:focus {
     display: inline;
     list-style-type: none;
     font-size: 20px;
+}
+
+.avatar{
+    width: 100%;
+}
+
+.fileSelect{
+    background:white;
+    color: #0071BD;
+    position:absolute;
+    width:60%;
+    left:20%;
 }
 
 /*footer style*/

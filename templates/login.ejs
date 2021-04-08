@@ -59,8 +59,10 @@
                             <div class="alert alert-danger">
                                 <%=messages.errorSignup%>
                             </div>
-                        <%}else{%>
-                            <br>
+                        <%}else if(messages.successSignup){%>
+                            <div class="alert alert-success">
+                                <%=messages.successSignup%>
+                            </div>
                         <%}%>
                         <div class="md-form mb-5">
                             <i class="fas fa-user prefix grey-text"></i>
