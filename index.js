@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var flash = require("express-flash");
 var session = require('express-session');
 var fileUpload = require("express-fileupload");
-var avatar; // represents the user avatar
+
 
 //Configure mysql connection
 var con = mysql.createConnection({
@@ -12,7 +12,8 @@ var con = mysql.createConnection({
     user: "root",
     password: "12345678",
     database: "Group4_Assignment3",
-    port: 3306
+    port: 3306,
+    multipleStatements:true
 });
 
 //Test connection
@@ -33,7 +34,7 @@ app.use(session({
     secret: 'crmorytp8vyp98p%&ADIB66^^&fjdfdfaklfdhf',
     resave: false,
     saveUninitialized: true,
-    cookie: {maxAge: 60000}
+    cookie: {maxAge: 6000000}
 }));
 app.use(flash());
 // set up our templating engine
@@ -63,13 +64,20 @@ app.get("/coffee", function (request, response) {
 });
 
 app.get("/profile", function (request, response) {
-    var sessionUsername = request.session.username;	//Assign cookie data to new variable
-    console.log(sessionUsername);
-    //Get avatar from DB
-    getAvatar(sessionUsername, function (result) {
-
-        avatar = result;
-        response.render("profile.ejs", {"sessionUsername": sessionUsername, "avatar": avatar});
+    var sessionUsername = request.session.username;
+    var booking=null;
+    var avatar; // represents the user avatar
+    var email;
+    getUserInfo(sessionUsername, function (avatarResult, emailResult,bookingResult) {
+        avatar = avatarResult;
+        email = emailResult;
+        booking= bookingResult;
+        response.render("profile.ejs", {
+            "sessionUsername": sessionUsername,
+            "avatar": avatar,
+            "email":email,
+            "booking": booking
+        });
     });
 });
 
@@ -116,7 +124,8 @@ app.post("/signup", function (request, response) {
                 if (err)
                     throw err;
             });
-            response.redirect('/');
+            request.flash('successSignup','You have successfully signed up, please login')
+            response.redirect('/login');
         } else {
             request.flash('errorSignup', 'Username already exisit');
             response.redirect('/login');
@@ -127,7 +136,7 @@ app.post("/signup", function (request, response) {
 });
 
 app.post("/login", function (request, response) {
-
+    
     //Retrieve data from signup form
     var username = request.body.username;
     var password = request.body.password;
@@ -138,12 +147,19 @@ app.post("/login", function (request, response) {
             //Create session data
             request.session.username = username;	//Assign cookie data to new variable
             var sessionUsername = request.session.username;
-            getAvatar(sessionUsername, function (result) {
-                avatar = result
+            var booking=null;
+            var avatar; // represents the user avatar
+            var email;
+            getUserInfo(sessionUsername, function (avatarResult, emailResult,bookingResult) {//get multiple user info----email, picture, booking status
+                avatar = avatarResult;
+                email = emailResult;
+                booking= bookingResult;
                 response.render("profile.ejs", {
                     "username": username,
                     "sessionUsername": sessionUsername,
-                    "avatar": avatar
+                    "avatar": avatar,
+                    "email":email,
+                    "booking": booking
                 });
             });
 
@@ -156,7 +172,7 @@ app.post("/login", function (request, response) {
 });
 
 app.post("/upload", function (request, response) {
-
+    var avatar; // represents the user avatar
     var sessionUsername = request.session.username;	//Assign cookie data to new variable
     //Check that a file has not been selected
     if (!(request.files && request.files.myimage)) {
@@ -189,15 +205,21 @@ app.post("/upload", function (request, response) {
             response.redirect('/profile');
         }
 
-        avatar = convert;
-        //render profile page
-        getAvatar(sessionUsername, function (result) {
-            avatar = result
-            response.render("profile.ejs", {
-                "sessionUsername": sessionUsername,
-                "avatar": avatar
+        var sessionUsername = request.session.username;
+            var booking=null;
+            var avatar; // represents the user avatar
+            var email;
+            getUserInfo(sessionUsername, function (avatarResult, emailResult,bookingResult) {
+                avatar = avatarResult;
+                email = emailResult;
+                booking= bookingResult;
+                response.render("profile.ejs", {
+                    "sessionUsername": sessionUsername,
+                    "avatar": avatar,
+                    "email":email,
+                    "booking": booking
+                });
             });
-        });
 
     }
 });
@@ -253,17 +275,25 @@ function checkLogin(user, pass, callback) {
         }
     });
 }
+/*get user email, picture, booking information*/ 
+function getUserInfo(user, callback) {
 
-function getAvatar(user, callback) {
-
-    con.query("SELECT picture FROM users where username = '" + user + "';", function (err, result, fields) {
+    con.query("SELECT picture, email FROM users WHERE username='"+user+"';Select room_name FROM users JOIN rooms ON booking=rooms.idrooms WHERE username='"+user+"';", function (err, result, fields) {
         if (err)
             throw err;
-
-        if (result[0].picture == null) {
-            return callback("user_Male.svg");   //If no image is set, use default
+        result=JSON.parse(JSON.stringify(result));
+        if (result[0][0].picture == null) {
+            if(typeof result[1]==undefined){
+                return callback("user_Male.svg",result[0][0].email,null);
+            }else{
+                return callback("user_Male.svg",result[0][0].email,result[1]);   //If no image is set, use default
+            }
         } else {
-            return callback("data:image/png;base64," + result[0].picture);  //Else, use the user uploaded image
+            if(typeof result[1]==undefined){
+                return callback("data:image/png;base64," + result[0][0].picture,result[0][0].email,null);
+            }else{
+                return callback("data:image/png;base64," + result[0][0].picture,result[0][0].email,result[1]);  //Else, use the user uploaded image
+            }
         }
     });
 
