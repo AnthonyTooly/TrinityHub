@@ -28,6 +28,7 @@
         </div>
         <div class="navbar navbar-item btn-group-vertical ml-23" role="group" aria-label="First Group">
             <% if(typeof sessionUsername!=='undfeined'&&sessionUsername!=null){%>
+                <a href="/profile" class="btn btn-sm bgColor mb-1" role="button">Profile</a>
                 <a href="/logout" class="btn btn-sm bgColor mb-1" role="button">Logout</a>
                 <%}else{%>
                     <button class="btn btn-sm bgColor mb-1" onclick=login() data-target="#login">Login</button>
