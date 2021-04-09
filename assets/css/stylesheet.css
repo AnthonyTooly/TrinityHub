@@ -1,6 +1,5 @@
-
-
 /* heading font style*/
+
 h1 {
     font-family: Source Sans Pro;
     font-style: normal;
@@ -18,13 +17,16 @@ h2 {
     color: #9590A0 !important;
 }
 
+
 /*body style to keep footer on the bottom*/
-.flex-wrapper{
-    display:flex;
-    min-height:100vh;
-    flex-direction:column;
+
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     justify-content: space-between;
 }
+
 
 /* paragraph style*/
 
@@ -271,17 +273,18 @@ button:focus {
     box-shadow: 1px 5px 10px rgba(0, 0, 0, .3);
 }
 
+
 /*profile style*/
 
 .profile {
     background: #0071BD;
     border-radius: 20px;
-    color:white;
+    color: white;
 }
 
 h1.profileTitle {
     margin: 0 auto;
-    color:white !important;
+    color: white !important;
     text-align: center !important;
 }
 
@@ -290,21 +293,23 @@ h1.profileTitle {
     font-size: 20px;
 }
 
-.avatar{
+.avatar {
     width: 100px;
-    height:100px;
+    height: 100px;
 }
+
 
 /*file select button style*/
 
-.fileSelect{
-    font-size:90%;
-    background:white;
+.fileSelect {
+    font-size: 90%;
+    background: white;
     color: #0071BD;
-    position:absolute;
-    width:100px;
-    left:6%;
+    position: absolute;
+    width: 100px;
+    left: 6%;
 }
+
 
 /*table style*/
 
@@ -313,25 +318,38 @@ h1.profileTitle2 {
     text-align: center !important;
 }
 
+
 /*footer style*/
-.footerText{
-    color:white;
+
+.footerText {
+    color: white;
 }
 
-.addressText{
-    margin-left:8%;
+.addressText {
+    margin-left: 8%;
 }
 
-.footerLogoSet{
-    margin-top:5%;
+.footerLogoSet {
+    margin-top: 5%;
 }
 
-.footerLogo{
-    margin-left:10%;
+.footerLogo {
+    margin-left: 10%;
 }
 
-.ml-6{
-    margin-left:5%;
+.ml-6 {
+    margin-left: 5%;
 }
+
+ul.navbar-nav {
+    transform: translate(-50%, 0%)
+}
+
 
 /*mobile version */
+
+@media screen and (max-width: 600px) {
+    ul.navbar-nav {
+        transform: translate(0%, 0%)
+    }
+}
