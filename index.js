@@ -6,7 +6,7 @@ var session = require('express-session');
 var fileUpload = require("express-fileupload");
 
 
-//Configure mysql connection
+/*local debug version of db*/
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -15,6 +15,18 @@ var con = mysql.createConnection({
     port: 3306,
     multipleStatements:true
 });
+
+
+/*remote database connection, only work on the server website */
+// var con = mysql.createConnection({
+//     host: "localhost",
+//     user: "temphost",
+//     password: "zwGbLLPvB2qHDzEs",
+//     database: "temphost_db",
+//     port: 3306,
+//     multipleStatements:true
+// });
+
 
 //Test connection
 con.connect(function (err) {
