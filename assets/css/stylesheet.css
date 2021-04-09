@@ -295,12 +295,21 @@ h1.profileTitle {
     width: 100%;
 }
 
+/*file select button style*/
+
 .fileSelect{
     background:white;
     color: #0071BD;
     position:absolute;
     width:60%;
     left:20%;
+}
+
+/*table style*/
+
+h1.profileTitle2 {
+    margin: 0 auto;
+    text-align: center !important;
 }
 
 /*footer style*/
