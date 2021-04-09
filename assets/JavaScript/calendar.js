@@ -4,7 +4,7 @@ function openModal(date) {
   const eventForDay = events.find(e => e.date === clicked);
 
   if (eventForDay) {
-    document.getElementById('eventText').innerText = eventForDay.title;
+      document.getElementById('eventText').innerHTML = eventForDay.title + "<br>" + eventForDay.room;
     deleteEventModal.style.display = 'block';
   } else {
     bookingMessage.innerText="New booking on "+clicked;
@@ -63,7 +63,7 @@ function load() {
       if (eventForDay) {
         const eventDiv = document.createElement('div');
         eventDiv.classList.add('event');
-        eventDiv.innerText = eventForDay.title;
+        eventDiv.innerHTML = eventForDay.title + "<br>" + eventForDay.room;
         daySquare.appendChild(eventDiv);
       }
 
@@ -82,6 +82,7 @@ function closeModal() {
   deleteEventModal.style.display = 'none';
   backDrop.style.display = 'none';
   eventTitleInput.value = '';
+  roomsInput.value = '';
   clicked = null;
   load();
 }
@@ -93,6 +94,7 @@ function saveEvent() {
     events.push({
       date: clicked,
       title: eventTitleInput.value,
+      room: roomsInput.value
     });
 
     localStorage.setItem('events', JSON.stringify(events));
@@ -134,6 +136,7 @@ const bookingMessage = document.getElementById('bookingMessage')
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
+const roomsInput = document.querySelector('#roomsInput');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 initButtons();
