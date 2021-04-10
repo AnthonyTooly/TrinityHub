@@ -72,16 +72,13 @@
                 </a><br>
             </div>
         </div>
-        <div id="flag" value="false"></div>
-        <script>
-            var flag = document.getElementById("flag").value
-        </script>
+        
         <%var flag=true;%>
         <%for(var i=1;i<events.length; i++){ %>
             <%if(i>3&&flag==true){%>
             <div class="row">
                 <div class="col col-md-6 offset-md-5">
-                    <button class="btn btn-primary rounded-button hide" data-toggle="collapse" data-target="#showAllEvent" aria-expended="false" aria-controls="showAllEvent">Show all update</button>
+                    <button class="btn btn-primary rounded-button bgColor hide" data-toggle="collapse" data-target="#showAllEvent" aria-expended="false" aria-controls="showAllEvent">Show all update</button>
                 </div>
             </div>
             <%flag=false;%>
