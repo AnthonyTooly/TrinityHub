@@ -116,9 +116,13 @@ app.get("/contact", function (request, response) {
 
 app.get("/login", function (request, response) {
     var sessionUsername = request.session.username;	//Assign cookie data to new variable
+    if(sessionUsername!=null){
+        response.redirect("/profile");
+    }else{
     response.render("login.ejs", {
         "sessionUsername": sessionUsername,
     });
+}
 });
 
 app.post("/signup", function (request, response) {
