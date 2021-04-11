@@ -20,7 +20,7 @@
         <div class="container">
             <h1>Live Events</h1>
             <div class="float-right">
-                <a class="btn bgColor " data-toggle="collapse" data-target="#showAllLiveEvents" aria-expended="false" aria-controlls="showAllLiveEvents">Show all Event</a>
+                <a class="btn bgColor " data-toggle="collapse" data-target="#showAllLiveEvents" aria-expended="false" >Show all Event</a>
             </div>
             <h2><%=date.day%>, <%=date.date%></h2>
             <br>
@@ -50,7 +50,7 @@
                     </div>
             <%}%>
             <div class="float-right">
-                <button class="btn bgColor" data-toggle="collapse" data-target="#showAllPreviousEvents" aria-expended="false" aria-controlls="showAllPreviousEvents">Show all Event</button>
+                <a class="btn bgColor" data-toggle="collapse" data-target="#showAllPreviousEvents" aria-expended="false">Show all Event</a>
             </div>
             <h1>Previous Events</h1><br>
             <% for(var i=0; i<events.length; i++){%>
