@@ -1,16 +1,27 @@
 
 function openModal(date) {
   clicked = date;
-  const eventForDay = events.find(e => e.date === clicked);
-
-  if (eventForDay) {
-      document.getElementById('eventText').innerHTML = eventForDay.title + "<br>" + eventForDay.room;
-    deleteEventModal.style.display = 'block';
-  } else {
     bookingMessage.innerText="New booking on "+clicked;
     newEventModal.style.display = 'block';
-  }
-
+    var dataTrans={"date":clicked};
+    $.ajax({
+      url:"/getBooking",
+      type:"POST",
+      data:{}
+    }).done(function(result){
+      for(var i=0; i<result.length;i++){
+        $("#roomsInput").append(`<option value="${result[i].room_name}">${result[i].room_name}</option>`);
+      }
+    })
+    $.ajax({
+      url:"/validBooking",
+      type: "POST",
+      data:dataTrans
+    }).done(function(result){
+      for(var i=0; i<result.length;i++){
+        $("#roomsInput").append(`<option value="${result[i].room_name}">${result[i].room_name}</option>`);
+      }
+    })
   backDrop.style.display = 'block';
 }
 
@@ -49,66 +60,74 @@ function load() {
   for(let i = 1; i <= paddingDays + daysInMonth; i++) {
     const daySquare = document.createElement('div');
     daySquare.classList.add('day');
-
     const dayString = `${month + 1}/${i - paddingDays}/${year}`;
-
+    var dateInput0;
+    if(month+1<10){
+      if(i-paddingDays<10){
+        dateInput0={date:`${year}-${0}${month+1}-${0}${i-paddingDays}`};
+      }else{
+        dateInput0={date:`${year}-${0}${month+1}-${i-paddingDays}`};
+      }
+    }else if(i-paddingDays<10){
+      dateInput0={date:`${year}-${month+1}-${0}${i-paddingDays}`};
+    }else{
+      dateInput0={date:`${year}-${month+1}-${i-paddingDays}`};
+    }
+    const dateInput=dateInput0;
     if (i > paddingDays) {
       daySquare.innerText = i - paddingDays;
-      const eventForDay = events.find(e => e.date === dayString);
 
       if (i - paddingDays === day && nav === 0) {
         daySquare.id = 'currentDay';
       }
-
-      if (eventForDay) {
-        const eventDiv = document.createElement('div');
-        eventDiv.classList.add('event');
-        eventDiv.innerHTML = eventForDay.title + "<br>" + eventForDay.room;
-        daySquare.appendChild(eventDiv);
-      }
-
-      daySquare.addEventListener('click', () => openModal(dayString));
+      $.ajax({
+        url:"/validBooking",
+        type: "POST",
+        data:dateInput
+      }).done(function(result){
+        if(result!="None"){
+          daySquare.addEventListener('click', () => openModal(dateInput.date));
+        } else{
+          daySquare.classList.add('padding');
+        }
+      })
     } else {
       daySquare.classList.add('padding');
     }
-
     calendar.appendChild(daySquare);    
+    
   }
 }
 
 function closeModal() {
-  eventTitleInput.classList.remove('error');
+  $('#roomsInput').empty();
   newEventModal.style.display = 'none';
   deleteEventModal.style.display = 'none';
   backDrop.style.display = 'none';
-  eventTitleInput.value = '';
   roomsInput.value = '';
   clicked = null;
   load();
 }
 
-function saveEvent() {
-  if (eventTitleInput.value) {
-    eventTitleInput.classList.remove('error');
-
-    events.push({
-      date: clicked,
-      title: eventTitleInput.value,
-      room: roomsInput.value
-    });
-
-    localStorage.setItem('events', JSON.stringify(events));
-    closeModal();
-  } else {
-    eventTitleInput.classList.add('error');
-  }
+function saveBooking(){
+  var date = bookingMessage.innerText;
+  var temp = "New booking on ";
+  date=date.substring(temp.length);
+  var name=$("#username").text();
+  name=name.substring("Username:   ".length);
+  var room=$("#roomsInput option:selected").text();
+  console.log(room);
+  dataTrans={date:date,room:room,name:name};
+  $.ajax({
+    url:"/makeBooking",
+    type: "POST",
+    data:dataTrans
+  }).done(function(result){
+      message.innerText=result;
+  })
 }
 
-function deleteEvent() {
-  events = events.filter(e => e.date !== clicked);
-  localStorage.setItem('events', JSON.stringify(events));
-  closeModal();
-}
+
 
 function initButtons() {
   document.getElementById('nextButton').addEventListener('click', () => {
@@ -121,9 +140,8 @@ function initButtons() {
     load();
   });
 
-  document.getElementById('saveButton').addEventListener('click', saveEvent);
+  document.getElementById('saveButton').addEventListener('click', saveBooking);
   document.getElementById('cancelButton').addEventListener('click', closeModal);
-  document.getElementById('deleteButton').addEventListener('click', deleteEvent);
   document.getElementById('closeButton').addEventListener('click', closeModal);
 }
 let nav = 0;
@@ -136,8 +154,9 @@ const bookingMessage = document.getElementById('bookingMessage')
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
+const message = document.getElementById('Message');
 const roomsInput = document.querySelector('#roomsInput');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
 initButtons();
 load();
+

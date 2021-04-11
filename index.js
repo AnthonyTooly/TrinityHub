@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var flash = require("express-flash");
 var session = require('express-session');
 var fileUpload = require("express-fileupload");
+const { compile } = require("ejs");
 
 
 /*local debug version of db*/
@@ -123,6 +124,32 @@ app.get("/login", function (request, response) {
         "sessionUsername": sessionUsername,
     });
 }
+});
+
+app.post("/validBooking",function(request, response){
+    //console.log(request.body);
+    var date=request.body.date;
+    var query;
+    checkBooking(date, function(result){
+        if(result==null){
+                response.send("All here!");
+        } else{
+                response.send(result);
+        }
+    });
+});
+
+app.post("/getBooking",function(request,response){
+    con.query("SELECT room_name FROM rooms", function(err, result){
+        response.send(result);
+    })
+});
+
+app.post("/makeBooking",function(request,response){
+    var data=request.body;
+    addBooking(data,function(result){
+        response.send(result);
+    });
 });
 
 app.post("/signup", function (request, response) {
@@ -294,7 +321,7 @@ function checkLogin(user, pass, callback) {
 /*get user email, picture, booking information*/ 
 function getUserInfo(user, callback) {
 
-    con.query("SELECT picture, email FROM users WHERE username='"+user+"';Select room_name FROM users JOIN rooms ON booking=rooms.idrooms WHERE username='"+user+"';", function (err, result, fields) {
+    con.query("SELECT picture, email FROM users WHERE username='"+user+"';Select room_name FROM users JOIN bookings ON users.idusers=bookings.idusers WHERE username='"+user+"';", function (err, result, fields) {
         if (err)
             throw err;
         result=JSON.parse(JSON.stringify(result));
@@ -312,6 +339,24 @@ function getUserInfo(user, callback) {
             }
         }
     });
+}
 
+function checkBooking(date, callback){
+    con.query("SELECT bookings.room_name FROM rooms JOIN bookings ON bookings.room_name=rooms.room_name WHERE Date='"+date+"';",function (err,result){
+        if(err)
+            throw err;
+        if(typeof result[0]==='undefined'||result[0].room_name==null){
+            return callback(null);
+        }else{
+            return callback(result);
+        }
+    });
+}
 
+function addBooking(data,callback){
+    con.query("INSERT INTO bookings (room_name,Date,idusers) VALUES ('" + data.room + "','" + data.date + "',(SELECT idusers FROM users WHERE username='"+data.name+"'))",function(err,result){
+        if(err)
+            throw err;
+        return ("success!");
+    })
 }

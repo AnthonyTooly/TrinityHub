@@ -61,10 +61,8 @@
                         </div>
                         <div class="col-md-4">
                             <ul>
-                                <li>Username: &#8287 <%= sessionUsername %>
-                                </li><br>
-                                <li>Email:&#8287 <%= email%>
-                                </li><br>
+                                <li id="username">Username: &#8287 <%= sessionUsername %></li><br>
+                                <li>Email:&#8287 <%= email%></li><br>
                                 <li>
                                     Existing booking:
                                 </li>
@@ -105,14 +103,13 @@
 
                         <div id="newEventModal">
                             <p id="bookingMessage">New booking on </p>
-                            <input id="eventTitleInput" placeholder="Event Title" />
+                            <a id="Message"></a>
                             <select id="roomsInput">
-                                <option value="Meeting Room 1">Meeting Room 1</option>
-                                <option value="Meeting Room 2">Meeting Room 2</option>
                             </select>
-
-                            <button id="saveButton">Save</button>
-                            <button id="cancelButton">Cancel</button>
+                            <div class="row ml-2">
+                                <button id="saveButton">Save</button>
+                                <button class="ml-1" id="cancelButton">Cancel</button>
+                            </div>
                         </div>
 
                         <div id="deleteEventModal">
@@ -131,7 +128,6 @@
                 </div>
             </div>
         </div><br>
-
         <!-- PROFILE END -->
         <%- include ("footer")%>
     </body>
