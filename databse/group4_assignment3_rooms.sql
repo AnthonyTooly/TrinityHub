@@ -26,12 +26,8 @@ CREATE TABLE `rooms` (
   `idrooms` int NOT NULL AUTO_INCREMENT,
   `room_name` varchar(45) DEFAULT NULL,
   `room_description` varchar(45) DEFAULT NULL,
-  `is_booked` tinyint DEFAULT NULL,
-  `idusers` int DEFAULT NULL,
-  PRIMARY KEY (`idrooms`),
-  KEY `idusers_idx` (`idusers`),
-  CONSTRAINT `idusers` FOREIGN KEY (`idusers`) REFERENCES `users` (`idusers`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`idrooms`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +36,7 @@ CREATE TABLE `rooms` (
 
 LOCK TABLES `rooms` WRITE;
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
-INSERT INTO `rooms` VALUES (1,'Meeting Room 1','Big Meeting Room',1,1);
+INSERT INTO `rooms` VALUES (1,'Meeting Room 1','Large room'),(2,'Meeting Room 2','Large room'),(3,'Meeting Room 3','Large room'),(4,'Meeting Room 4','Large room');
 /*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-08 21:23:00
+-- Dump completed on 2021-04-11 15:02:42
