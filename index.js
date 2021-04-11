@@ -154,6 +154,13 @@ app.post("/makeBooking",function(request,response){
     });
 });
 
+app.post("/getBooking",function(request,response){
+    var data = request.body;
+    getBookings(data,function(result){
+            response.send(result);
+    });
+});
+
 app.post("/signup", function (request, response) {
 
     //Retrieve data from signup form
@@ -355,3 +362,17 @@ function addBooking(data,callback){
         }
     });
 }
+
+function getBookings(data, callback){
+    con.query("SELECT room_name, Date FROM bookings JOIN users ON bookings.idusers=users.idusers WHERE username='"+data.name+"';",function(err,result){
+        if (err){
+            throw err;
+        }
+        if(result[0]==null){
+            return callback(null);
+        }else{
+            return callback(result);
+        }
+    });
+}
+    

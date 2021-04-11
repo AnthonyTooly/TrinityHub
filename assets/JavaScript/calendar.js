@@ -1,4 +1,44 @@
-
+function loadBooking(){
+  $.ajax({
+    url:"/getBooking",
+    type:"POST",
+    data:{name:document.getElementById("username").innerText.substring("Username:   ".length)}
+  }).done(function(result){
+    console.log(result);
+    var bookings=document.getElementById("profile");
+    if(result!=""){
+    for(var i=0; i<result.length;i++){
+      if(i==5){
+        var button=document.createElement("button");
+        button.innerHTML="Show All";
+        button.classList.add("showAll");
+        bookings.appendChild(button);
+        button.addEventListener("click",function(){
+          var bookingList=document.getElementsByClassName("hiddenBooking");
+          var button=document.getElementsByClassName("showAll")[0];
+          console.log(button);
+          for(var a=0; a<bookingList.length; a++){
+            bookingList[a].classList.remove("hiddenBooking");
+          }
+          button.style.display='none';
+        })
+      }
+      var booking=document.createElement("li");
+      var content=result[i].room_name+" | "+result[i].Date.toString().slice(0,10);
+      if(i>=5){
+        booking.classList.add("hiddenBooking");
+      }
+      booking.innerHTML=content;
+      bookings.appendChild(booking);
+    }
+  }
+  else{
+    var booking=document.createElement("li");
+    booking.innerHTML="You have no exisiting booking";
+    bookings.appendChild(booking);
+  }
+  });
+}
 function openModal(date) {
   clicked = date;
     bookingMessage.innerText="New booking on "+clicked;
@@ -122,6 +162,8 @@ function saveBooking(){
 
 
 
+
+
 function initButtons() {
   document.getElementById('nextButton').addEventListener('click', () => {
     nav++;
@@ -141,6 +183,7 @@ let nav = 0;
 let clicked = null;
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
 
+loadBooking();
 const calendar = document.getElementById('calendar');
 const newEventModal = document.getElementById('newEventModal');
 const bookingMessage = document.getElementById('bookingMessage')
