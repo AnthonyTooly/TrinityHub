@@ -49,7 +49,7 @@ body {
     background-color: #e8faed;
   }
   
-  .day + #currentDay {
+  .day + .currentDay {
     background-color:#e8f4fa;
   }
   .event {
