@@ -18,8 +18,9 @@ function openModal(date) {
       type: "POST",
       data:dataTrans
     }).done(function(result){
+      console.log(result);
       for(var i=0; i<result.length;i++){
-        $("#roomsInput").append(`<option value="${result[i].room_name}">${result[i].room_name}</option>`);
+       $("#roomsInput").find('option[value="'+result[i].room_name+'"]').remove();
       }
     })
   backDrop.style.display = 'block';
