@@ -35,7 +35,7 @@ function load() {
   const day = dt.getDate();
   const month = dt.getMonth();
   const year = dt.getFullYear();
-
+  premonth=month+1;
   const firstDayOfMonth = new Date(year, month, 1);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   
@@ -78,7 +78,7 @@ function load() {
       daySquare.innerText = i - paddingDays;
 
       if (i - paddingDays === day && nav === 0) {
-        daySquare.id = 'currentDay';
+        daySquare.classList.add('currentDay');
       }
       $.ajax({
         url:"/validBooking",
@@ -86,6 +86,7 @@ function load() {
         data:dateInput
       }).done(function(result){
         if(result!="None"){
+          daySquare.id=i-paddingDays;
           daySquare.addEventListener('click', () => openModal(dateInput.date));
         } else{
           daySquare.classList.add('padding');
@@ -100,6 +101,13 @@ function load() {
 }
 
 function closeModal() {
+  if($("#roomsInput option").length<1){
+    var check=parseInt(clicked[8]+clicked[9]);
+    console.log(check);
+    document.getElementById(check).classList.add('padding');
+    console.log(document.getElementById(check).classList);
+    document.getElementById(check).removeEventListener('click', () => openModal(dateInput.date));
+  }
   $('#roomsInput').empty();
   newEventModal.style.display = 'none';
   deleteEventModal.style.display = 'none';
@@ -107,7 +115,7 @@ function closeModal() {
   roomsInput.value = '';
   message.text='';
   clicked = null;
-  load();
+  
 }
 
 function saveBooking(){
@@ -125,6 +133,7 @@ function saveBooking(){
     data:dataTrans
   }).done(function(result){
   })
+  openModal(date);
   closeModal();
 }
 
@@ -158,6 +167,7 @@ const eventTitleInput = document.getElementById('eventTitleInput');
 const message = document.getElementById('Message');
 const roomsInput = document.querySelector('#roomsInput');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var premonth;
 initButtons();
 load();
 
