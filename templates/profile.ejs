@@ -33,21 +33,20 @@
                 </div>
                 <div class="col-md-8 profile">
                     <h1 class="justify-content-center profileTitle"> Profile </h1><br>
-                    <div class="row justify-content-center">
-                        <div class="col-md-2">
+                    <div class="row ">
+                        <div class="col-md-1">
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <img src="<%= avatar%>" alt='Profile Picture' class="avatar">
                             <%if(sessionUsername){%>
-                            <form action="/upload" method="post" enctype="multipart/form-data">
-                                <div class="container">
-                                    <input id="upload" class="custom-file-input" type="file" name="myimage"
-                                           onchange="form.submit()">
-                                    <label class="fileSelect" for="upload">
-                                        Update picture
-                                    </label>
-                                </div>
-                            </form>
+                                    <form action="/upload"  method="post" enctype="multipart/form-data">     
+                                        <div class="image-upload">
+                                            <label class="" for="upload">
+                                                <i class="fa fa-camera " aria-hidden="true"></i>
+                                            </label>
+                                            <input id="upload" type="file" name="myimage"onchange="form.submit()">
+                                        </div>
+                                    </form>
                             <% } %>
                             <%if(messages.errorUpload){%>
                             <div class="alert alert-danger">
@@ -66,7 +65,7 @@
                                 <li id="email">Email:&#8287 <%= email%></li><br>
                                 <li>
                                     Existing booking:
-                                </li><br>
+                                </li>
                                 <%if(booking!=null&&booking.length>0&&booking!=""){%>
                                 <li>Room: &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287| Time:</li>
                                 <%}%>

@@ -109,3 +109,11 @@ body {
     color: white !important;
     background-color: #0071BD !important;
   }
+
+  .image-upload >input{
+    display:none;
+  }
+
+  .labelForUpload{
+    margin-bottom: 20%;
+  }
