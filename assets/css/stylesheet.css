@@ -16,6 +16,8 @@ h2 {
     display: flex;
     color: #9590A0 !important;
 }
+
+
 /*body style to keep footer on the bottom*/
 
 .flex-wrapper {
@@ -24,6 +26,8 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
 }
+
+
 /* paragraph style*/
 
 p {
@@ -32,6 +36,8 @@ p {
     display: flex;
     align-items: center;
 }
+
+
 /*stylesheet for navigation brand*/
 
 .navbar {
@@ -46,6 +52,8 @@ p {
 .w-20 {
     width: 20%;
 }
+
+
 /*customised margin value */
 
 .ml-8 {
@@ -59,11 +67,15 @@ p {
 .mt-customize {
     margin-top: 4% !important;
 }
+
+
 /*stylesheet for navigation font color */
 
 .nav-link {
     color: #0071BD !important;
 }
+
+
 /*stylesheet for logos including facebook, google etc and buttons for media follow*/
 
 .logo {
@@ -75,6 +87,8 @@ p {
     margin-left: 10%;
     width: 20%;
 }
+
+
 /*stylesheet for skip nav*/
 
 .tcd-skip {
@@ -91,6 +105,8 @@ p {
 .tcd-skip:focus {
     top: 0;
 }
+
+
 /*stylesheet for rounded button and rectangles */
 
 .rounded-pill {
@@ -105,6 +121,8 @@ p {
 .hide[aria-expanded="true"] {
     display: none;
 }
+
+
 /* style for menu on coffee*/
 
 .menu {
@@ -116,12 +134,16 @@ p {
     padding-top: 20px;
     text-align: center;
 }
+
+
 /*style sheet for all of buttons */
 
 .bgColor {
     color: white !important;
     background-color: #0071BD !important;
 }
+
+
 /*style sheet for video and image */
 
 .medialink {
@@ -131,6 +153,8 @@ p {
 .mainImage {
     width: 50% !important;
 }
+
+
 /*stylesheet for contact page */
 
 .contact {
@@ -240,6 +264,8 @@ button:focus {
     background: #fff;
     box-shadow: 1px 5px 10px rgba(0, 0, 0, .3);
 }
+
+
 /*profile style*/
 
 .profile {
@@ -263,6 +289,8 @@ h1.profileTitle {
     width: 100px;
     height: 100px;
 }
+
+
 /*file select button style*/
 
 .fileSelect {
@@ -273,12 +301,16 @@ h1.profileTitle {
     width: 100px;
     left: 6%;
 }
+
+
 /*table style*/
 
 h1.profileTitle2 {
     margin: 0 auto;
     text-align: center !important;
 }
+
+
 /*footer style*/
 
 .footerText {
@@ -308,6 +340,8 @@ h1.profileTitle2 {
 .ml-6 {
     margin-left: 5%;
 }
+
+
 /*mobile version */
 
 @media screen and (max-width: 600px) {
@@ -333,12 +367,9 @@ h1.profileTitle2 {
     .addressText {
         margin: 0 auto;
     }
-    .text-left {
-        transform: translate(28%, 23%);
-    }
 }
 
-#form_label{
+#form_label {
     cursor: pointer;
     width: 117px;
     height: 30px;
@@ -351,5 +382,4 @@ h1.profileTitle2 {
     border-radius: 4px;
     background: #fff;
     box-shadow: 1px 5px 10px rgba(0, 0, 0, .3);
-    
 }
