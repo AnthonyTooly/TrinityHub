@@ -3,23 +3,14 @@ function openModal(date) {
   clicked = date;
     bookingMessage.innerText="New booking on "+clicked;
     newEventModal.style.display = 'block';
-    var dataTrans={"date":clicked};
-    $.ajax({
-      url:"/getBooking",
-      type:"POST",
-      data:{}
-    }).done(function(result){
-      for(var i=0; i<result.length;i++){
-        $("#roomsInput").append(`<option value="${result[i].room_name}">${result[i].room_name}</option>`);
-      }
-    })
+    var dataTrans={date:clicked};
     $.ajax({
       url:"/validBooking",
-      type: "POST",
+      type:"POST",
       data:dataTrans
     }).done(function(result){
       for(var i=0; i<result.length;i++){
-       $("#roomsInput").find('option[value="'+result[i].room_name+'"]').remove();
+        $("#roomsInput").append(`<option value="${result[i].room_name}">${result[i].room_name}</option>`);
       }
     })
   backDrop.style.display = 'block';
@@ -101,12 +92,7 @@ function load() {
 }
 
 function closeModal() {
-  if($("#roomsInput option").length<1){
-    var check=parseInt(clicked[8]+clicked[9]);
-    console.log(check);
-    document.getElementById(check).classList.add('padding');
-    console.log(document.getElementById(check).classList);
-  }
+
   $('#roomsInput').empty();
   newEventModal.style.display = 'none';
   deleteEventModal.style.display = 'none';
@@ -124,7 +110,6 @@ function saveBooking(){
   var name=$("#username").text();
   name=name.substring("Username:   ".length);
   var room=$("#roomsInput option:selected").text();
-  console.log(room);
   dataTrans={date:date,room:room,name:name};
   $.ajax({
     url:"/makeBooking",

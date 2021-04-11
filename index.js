@@ -127,9 +127,7 @@ app.get("/login", function (request, response) {
 });
 
 app.post("/validBooking",function(request, response){
-    //console.log(request.body);
     var date=request.body.date;
-    var query;
     checkBooking(date, function(result){
         if(result==null){
                 response.send("None");
@@ -139,11 +137,7 @@ app.post("/validBooking",function(request, response){
     });
 });
 
-app.post("/getBooking",function(request,response){
-    con.query("SELECT room_name FROM rooms", function(err, result){
-        response.send(result);
-    })
-});
+
 
 app.post("/makeBooking",function(request,response){
     var data=request.body;
