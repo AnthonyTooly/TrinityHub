@@ -383,3 +383,18 @@ h1.profileTitle2 {
     background: #fff;
     box-shadow: 1px 5px 10px rgba(0, 0, 0, .3);
 }
+
+.col{
+    width: 450px;
+    height: 656.51px;
+    margin-right: 70px;
+    border-radius: 20px;
+    background: #0071bd;
+    color: #ffff !important;
+}
+
+.modal-title{
+    display: inline;
+    text-align: center !important;
+    color: #ffff !important;
+}
