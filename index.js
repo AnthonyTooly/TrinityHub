@@ -164,7 +164,7 @@ app.post("/getBooking",function(request,response){
 app.post("/signup", function (request, response) {
 
     //Retrieve data from signup form
-    var username = request.body.username;
+    var username = request.body.signupusername;
     var email = request.body.email;
     var password = request.body.password;
     var sessionUsername = null;	//Assign cookie data to new variable
@@ -176,7 +176,7 @@ app.post("/signup", function (request, response) {
                 if (err)
                     throw err;
             });
-            request.flash('successSignup','You have successfully signed up, please login')
+            request.flash('successSignup','You have successfully signed up, please login');
             response.redirect('/login');
         } else {
             request.flash('errorSignup', 'Username already exisit');
@@ -190,7 +190,7 @@ app.post("/signup", function (request, response) {
 app.post("/login", function (request, response) {
     
     //Retrieve data from signup form
-    var username = request.body.username;
+    var username = request.body.loginusername;
     var password = request.body.password;
     var err_message = '';
     //Check whether the user already exists
