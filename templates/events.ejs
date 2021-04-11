@@ -20,7 +20,7 @@
         <div class="container">
             <h1>Live Events</h1>
             <div class="float-right">
-                <button class="btn bgColor " data-toggle="collapse" data-target="#showAllLiveEvents" aria-expended="false" aria-controlls="showAllLiveEvents">Show all Event</button>
+                <a class="btn bgColor " data-toggle="collapse" data-target="#showAllLiveEvents" aria-expended="false" aria-controlls="showAllLiveEvents">Show all Event</a>
             </div>
             <h2><%=date.day%>, <%=date.date%></h2>
             <br>
@@ -42,7 +42,7 @@
                     </div>
                     <small><%=events[i].date%>@<%=events[i].time%></small>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe width="1280" height="720" src="<%=events[i].url%>" title="<%=events[i].title%>" frameborder="0"  allowfullscreen></iframe>
+                        <iframe width="1280" height="720" src="<%=events[i].url%>" title="<%=events[i].title%>"  allowfullscreen></iframe>
                     </div><br><br>
                 <%}%>
             <%}%>
@@ -67,7 +67,7 @@
                     </div>
                     <small><%=events[i].date%>@<%=events[i].time%></small>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe width="1280" height="720" src="<%=events[i].url%>" title="<%=events[i].title%>" frameborder="0"  allowfullscreen></iframe>
+                        <iframe width="1280" height="720" src="<%=events[i].url%>" title="<%=events[i].title%>"  allowfullscreen></iframe>
                     </div><br>
                 <%}%>
             <%}%>
