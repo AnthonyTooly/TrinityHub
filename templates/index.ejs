@@ -78,9 +78,13 @@
         <%for(var i=1;i<events.length; i++){ %>
             <%if(i>3&&flag==true){%>
             <div class="row">
-                <div class="col col-md-6 offset-md-5">
-                    <button class="btn btn-primary rounded-button bgColor hide" data-toggle="collapse" data-target="#showAllEvent" aria-expended="false" aria-controls="showAllEvent">Show all update</button>
+                <div class="col-md-3"></div>
+                <div class="col-md-6 offset-md-2 ">
+                    <div class="justify-content-center">
+                        <button class="btn rounded-button bgColor justify-content-center hide" data-toggle="collapse" data-target="#showAllEvent" aria-expended="false" aria-controls="showAllEvent">Show all update</button>
+                    </div>
                 </div>
+                <div class="col-md-3"></div>
             </div>
             <%flag=false;%>
             <div class="collapse" id="showAllEvent">

@@ -195,19 +195,8 @@ app.post("/login", function (request, response) {
             var booking=null;
             var avatar; // represents the user avatar
             var email;
-            getUserInfo(sessionUsername, function (avatarResult, emailResult,bookingResult) {//get multiple user info----email, picture, booking status
-                avatar = avatarResult;
-                email = emailResult;
-                booking= bookingResult;
-                response.render("profile.ejs", {
-                    "username": username,
-                    "sessionUsername": sessionUsername,
-                    "avatar": avatar,
-                    "email":email,
-                    "booking": booking
-                });
-            });
-
+            response.redirect("/profile");
+          
         } else {
             request.flash('errorLogin', 'Please enter valid information');
             response.redirect('/login');
