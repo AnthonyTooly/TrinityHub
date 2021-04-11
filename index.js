@@ -148,7 +148,15 @@ app.post("/getBooking",function(request,response){
 app.post("/makeBooking",function(request,response){
     var data=request.body;
     addBooking(data,function(result){
-        response.send(result);
+        if(result==false){
+            con.query("INSERT INTO bookings (room_name,Date,idusers) VALUES ('" + data.room + "','" + data.date + "',(SELECT idusers FROM users WHERE username='"+data.name+"'))",function(err,result){
+                if(err)
+                    throw err;
+                response.send("success!");
+            })
+        }else{
+            response.send("That's been booked!");
+        }
     });
 });
 
@@ -354,9 +362,13 @@ function checkBooking(date, callback){
 }
 
 function addBooking(data,callback){
-    con.query("INSERT INTO bookings (room_name,Date,idusers) VALUES ('" + data.room + "','" + data.date + "',(SELECT idusers FROM users WHERE username='"+data.name+"'))",function(err,result){
+    con.query("SELECT room_name FROM bookings WHERE Date='"+data.date+"';",function(err,result){
         if(err)
             throw err;
-        return ("success!");
-    })
+        if(result==null){
+            return callback(true);
+        }else{
+            return callback(false);
+        }
+    });
 }

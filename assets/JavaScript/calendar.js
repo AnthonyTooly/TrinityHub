@@ -18,7 +18,6 @@ function openModal(date) {
       type: "POST",
       data:dataTrans
     }).done(function(result){
-      console.log(result);
       for(var i=0; i<result.length;i++){
        $("#roomsInput").find('option[value="'+result[i].room_name+'"]').remove();
       }
@@ -106,6 +105,7 @@ function closeModal() {
   deleteEventModal.style.display = 'none';
   backDrop.style.display = 'none';
   roomsInput.value = '';
+  message.text='';
   clicked = null;
   load();
 }
@@ -124,8 +124,8 @@ function saveBooking(){
     type: "POST",
     data:dataTrans
   }).done(function(result){
-      message.innerText=result;
   })
+  closeModal();
 }
 
 
