@@ -132,7 +132,7 @@ app.post("/validBooking",function(request, response){
     var query;
     checkBooking(date, function(result){
         if(result==null){
-                response.send("All here!");
+                response.send("None");
         } else{
                 response.send(result);
         }
@@ -350,7 +350,7 @@ function getUserInfo(user, callback) {
 }
 
 function checkBooking(date, callback){
-    con.query("SELECT bookings.room_name FROM rooms JOIN bookings ON bookings.room_name=rooms.room_name WHERE Date='"+date+"';",function (err,result){
+    con.query("SELECT room_name FROM rooms WHERE room_name NOT IN (select room_name from bookings where Date='"+date+"');",function (err,result){
         if(err)
             throw err;
         if(typeof result[0]==='undefined'||result[0].room_name==null){

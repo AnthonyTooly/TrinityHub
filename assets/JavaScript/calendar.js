@@ -106,7 +106,6 @@ function closeModal() {
     console.log(check);
     document.getElementById(check).classList.add('padding');
     console.log(document.getElementById(check).classList);
-    document.getElementById(check).removeEventListener('click', () => openModal(dateInput.date));
   }
   $('#roomsInput').empty();
   newEventModal.style.display = 'none';
@@ -115,7 +114,7 @@ function closeModal() {
   roomsInput.value = '';
   message.text='';
   clicked = null;
-  
+  load();
 }
 
 function saveBooking(){
@@ -133,7 +132,6 @@ function saveBooking(){
     data:dataTrans
   }).done(function(result){
   })
-  openModal(date);
   closeModal();
 }
 
