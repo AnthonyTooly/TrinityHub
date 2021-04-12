@@ -154,7 +154,9 @@ p {
     width: 50% !important;
 }
 
-
+.ml-13{
+    margin-left:12%;
+}
 /*stylesheet for contact page */
 
 .contact {
