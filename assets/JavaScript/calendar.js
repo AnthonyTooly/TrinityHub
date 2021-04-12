@@ -4,6 +4,7 @@ function loadBooking(){
     type:"POST",
     data:{name:document.getElementById("username").innerText.substring("Username:   ".length)}
   }).done(function(result){
+    console.log(result);
     var bookings=document.getElementById("profile");
     if(result!=""){
     for(var i=0; i<result.length;i++){
@@ -15,6 +16,7 @@ function loadBooking(){
         button.addEventListener("click",function(){
           var bookingList=document.getElementsByClassName("hiddenBooking");
           var button=document.getElementsByClassName("showAll")[0];
+          console.log(button);
           for(var a=0; a<bookingList.length; a++){
             bookingList[a].classList.remove("hiddenBooking");
           }
@@ -148,7 +150,7 @@ function saveBooking(){
   var name=$("#username").text();
   name=name.substring("Username:   ".length);
   var room=$("#roomsInput option:selected").text();
-  var dataTrans={date:date,room:room,name:name};
+  dataTrans={date:date,room:room,name:name};
   $.ajax({
     url:"/makeBooking",
     type: "POST",
