@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Trinity Innovation Hub</title>
+</head>
+
+<body class="flex-wrapper">
+    <!-- NAVIGATION BAR START -->
+    <%- include("nav", {active: "Home"}) %>
+        <!-- NAVIGATION BAR END-->
+        <!-- HEADER START -->
+        <div class="container">
+            <h1>Live Events</h1>
+            <div class="float-right">
+                <a class="btn bgColor " data-toggle="collapse" data-target="#showAllLiveEvents" aria-expended="false" >Show all Event</a>
+            </div>
+            <h2><%=date.day%>, <%=date.date%></h2>
+            <br>
+            <%var flag=true;%>                                          <!--flag for live event button-->
+            <%var flag2=true;%>                                         <!--flag for previous event button-->
+            <%var numOfLiveEvents=0;%>                                   <!--number of live event-->
+            <%var numOfPreviousEvents=0%>                                <!--number of previous event-->
+            <% for(var i=0; i<events.length; i++){%>
+                <%if(events[i].date==date.date){%>                      <!--if event date is today-->
+                    <%numOfLiveEvents++;%>
+                    <%if(numOfLiveEvents>1&&flag==true){%>
+                    <div class="collapse" id="showAllLiveEvents">
+                        <%flag=false;%>
+                    <%}%>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                            <%= events[i].title %>
+                        </h5>
+                    </div>
+                    <small><%=events[i].date%>@<%=events[i].time%></small>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="1280" height="720" src="<%=events[i].url%>" title="<%=events[i].title%>"  allowfullscreen></iframe>
+                    </div><br><br>
+                <%}%>
+            <%}%>
+            <%if(flag==false){%>
+                    </div>
+            <%}%>
+            <div class="float-right">
+                <a class="btn bgColor" data-toggle="collapse" data-target="#showAllPreviousEvents" aria-expended="false">Show all Event</a>
+            </div>
+            <h1>Previous Events</h1><br>
+            <% for(var i=0; i<events.length; i++){%>
+                <%if(events[i].date!=date.date&&events[i].url!="#"){%>          <!--if the date is not today-->
+                    <%numOfPreviousEvents++;%>
+                    <%if(numOfPreviousEvents>2&&flag2==true){%>
+                        <div class="collapse" id="showAllPreviousEvents">
+                            <%flag2=false;%>
+                    <%}%>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                            <%= events[i].title %>
+                        </h5>
+                    </div>
+                    <small><%=events[i].date%>@<%=events[i].time%></small>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="1280" height="720" src="<%=events[i].url%>" title="<%=events[i].title%>"  allowfullscreen></iframe>
+                    </div><br>
+                <%}%>
+            <%}%>
+            <%if(flag2==false){%>
+                </div>
+            <%}%>
+            <br>
+            
+            <h1>Our Partners</h1><br><br>
+            <div class="container">
+                <img src="Google__G__Logo.svg" class="logo" alt="Google Logo"> 
+                <img src="facebook-svgrepo-com.svg" class="logo" alt="Facebook Logo">
+                <img src="Microsoft_logo.svg" class="logo" alt="Microsoft Logo">
+            </div><br><br>
+            <h1>Follow Us</h1><br><br>
+            <div class="container ">
+                <a href="https://www.instagram.com/trinitycollegedublin/?hl=en" class="btn bgColor col-1 ml-13"  target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/school/trinity-college-dublin/?originalSubdomain=ie" class="btn bgColor col-1 ml-13"  target="_blank">LinkedIn</a>
+                <a href="https://www.facebook.com/trinitycollegedublin/" class="btn bgColor col-1 ml-13"  target="_blank">Facebook</a>
+                <a href="https://twitter.com/tcddublin" class="btn bgColor col-1 ml-13" target="_blank">Twitter</a>
+            </div><br>
+        </div>
+        <%- include ("footer")%>
+</body>
+
+</html>

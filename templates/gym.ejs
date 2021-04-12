@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Trinity Innovation Hub</title>
+</head>
+
+<body class="flex-wrapper">
+    <!-- NAVIGATION BAR START -->
+    <%- include("nav", {active: "Home"}) %>
+        <!-- NAVIGATION BAR END-->
+        <!-- HEADER START -->
+        <div class="text-center">
+            <img src='fitness_graphic_desktop.png' class='img-fluid ' alt='breathing space and mug'>
+        </div>
+        <!-- HEADER END -->
+
+        <!-- MENU START -->
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <!-- MENU END -->
+                <!-- MEDIA LINKS START -->
+                <div class='col-md-4 col-xs-12'>
+                    <iframe class="gymvid" width="560" height="315" src="https://www.youtube.com/embed/2CUvrojSM6w?controls=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- VIDEO HERE -->
+                </div>
+                <div class='col-md-4  col-xs-12 text-center'>
+                    <h3><i>For Pricing</i></h3>
+                    <br>
+                    <button class="btn btn-primary">Contact Us</button>
+                </div>
+                <!-- MEDIA LINKS END -->
+            </div>
+        </div>
+        <%- include ("footer")%>
+</body>
+
+</html>
