@@ -31,7 +31,7 @@ CREATE TABLE `bookings` (
   PRIMARY KEY (`idbooking`),
   KEY `idusers_idx` (`idusers`),
   CONSTRAINT `idusers` FOREIGN KEY (`idusers`) REFERENCES `users` (`idusers`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `bookings` (
 
 LOCK TABLES `bookings` WRITE;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
-INSERT INTO `bookings` VALUES (1,'Meeting Room 1',NULL,'2021-04-03',2),(2,'Meeting Room 2',NULL,'2021-04-03',2),(3,'Meeting Room 3',NULL,'2021-04-03',2),(4,'Meeting Room 4',NULL,'2021-04-03',2),(5,'Meeting Room 1',NULL,'2021-04-05',2),(6,'Meeting Room 1',NULL,'2021-04-06',2),(7,'Meeting Room 2',NULL,'2021-04-05',2);
+INSERT INTO `bookings` VALUES (1,'Meeting Room 1',NULL,'2021-04-03',2),(2,'Meeting Room 2',NULL,'2021-04-03',2),(3,'Meeting Room 3',NULL,'2021-04-03',2),(4,'Meeting Room 4',NULL,'2021-04-03',2),(5,'Meeting Room 1',NULL,'2021-04-05',2),(6,'Meeting Room 1',NULL,'2021-04-06',2),(7,'Meeting Room 2',NULL,'2021-04-05',2),(8,'Meeting Room 1',NULL,'2021-04-02',2),(9,'Meeting Room 2',NULL,'2021-04-02',2),(10,'Meeting Room 3',NULL,'2021-04-02',2),(11,'Meeting Room 4',NULL,'2021-04-02',2),(12,'Meeting Room 1',NULL,'2021-04-01',2),(13,'Meeting Room 2',NULL,'2021-04-01',2),(14,'Meeting Room 3',NULL,'2021-04-01',2),(15,'Meeting Room 1',NULL,'2021-04-07',2),(16,'Meeting Room 2',NULL,'2021-04-07',2),(17,'Meeting Room 4',NULL,'2021-04-01',2);
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-11 15:02:42
+-- Dump completed on 2021-04-12  9:51:05
